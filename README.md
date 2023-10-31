@@ -1,39 +1,89 @@
 ---
 layout: home
-title: Just the Class
+title: CIS373 - Pervasive Computing
 nav_exclude: true
-permalink: /:path/
+permalink: index.html
 seo:
   type: Course
-  name: Just the Class
+  name: Pervasive Computing
 ---
 
-# Just the Class
+# CIS373 - Pervasive Computing
+{:.no_toc}
 
-Just the Class is a GitHub Pages template developed for the purpose of quickly deploying course websites. In addition to serving plain web pages and files, it provides a boilerplate for:
+## Table of contents
+{: .no_toc .text-delta }
 
-- [announcements](announcements.md),
-- a [course calendar](calendar.md),
-- a [staff](staff.md) page,
-- and a weekly [schedule](schedule.md).
+1. TOC
+{:toc}
 
-Just the Class is a template that extends the popular [Just the Docs](https://github.com/just-the-docs/just-the-docs) theme, which provides a robust and thoroughly-tested foundation for your website. Just the Docs include features such as:
+---
 
-- automatic [navigation structure](https://just-the-docs.github.io/just-the-docs/docs/navigation-structure/),
-- instant, full-text [search](https://just-the-docs.github.io/just-the-docs/docs/search/) and page indexing,
-- and a set of [UI components](https://just-the-docs.github.io/just-the-docs/docs/ui-components) and authoring [utilities](https://just-the-docs.github.io/just-the-docs/docs/utilities).
+## Upcoming Deadlines
 
-## Getting Started
+*Note - check Blackboard for any in-class assignments and assignment files!*
 
-Getting started with Just the Class is simple.
+## Course Description
 
-1. Create a [new repository based on Just the Class](https://github.com/kevinlin1/just-the-class/generate).
-1. Update `_config.yml` and `README.md` with your course information. [Be sure to update the url and baseurl](https://mademistakes.com/mastering-jekyll/site-url-baseurl/).
-1. Configure a [publishing source for GitHub Pages](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). Your course website is now live!
-1. Edit and create `.md` [Markdown files](https://guides.github.com/features/mastering-markdown/) to add more content pages.
+* T 
+* B
+* D
 
-Just the Class has been used by instructors at Stanford University ([CS 161](https://stanford-cs161.github.io/winter2021/)), UC Berkeley ([Data 100](https://ds100.org/fa21/)), UC Santa Barbara ([CSW8](https://ucsb-csw8.github.io/s22/)), Northeastern University ([CS4530/5500](https://neu-se.github.io/CS4530-CS5500-Spring-2021/)), and Carnegie Mellon University ([17-450/17-950](https://cmu-crafting-software.github.io/)). Share your course website and find more examples in the [show and tell discussion](https://github.com/kevinlin1/just-the-class/discussions/categories/show-and-tell)!
+---
 
-### Local development environment
+## Learning Objectives
 
-Just the Class requires no special Jekyll plugins and can run on GitHub Pages' standard Jekyll compiler. To setup a local development environment, clone your template repository and follow the GitHub Docs on [Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll).
+TBD
+
+---
+
+## Lecture
+
+Class meets 1 time a week in person.  Typically class will comprise a lecture with some in-class assignments sprinkled throughout.  These are due the **next day by 11:59pm**.  Ensure you keep up on these, as they factor into the Participation part of your grade.  
+
+**Note**: I will not accept late in-class assignment submissions - no exceptions.
+
+---
+
+## Term Project
+
+There will be a half-semester term project.  Check out the [term projects page](term-projects) for more details.
+
+---
+
+## Assignments
+
+All assignments are due by 11:59pm on the date they are due.  Please check Blackboard regularly for upcoming due dates.  If you are struggling or are having problems, please contact me in advance.  If you message me or email me the night something is due I will most likely not accept your reasoning.  If you get in touch early then we can work it out.
+
+* Individual and team assignment late penalty: 10% per day (including weekends)
+* Late in-class assignment submissions are **not accepted**
+
+### Submissions
+
+* All course content is hosted on this page.
+* **All assignment submissions are to be submitted via [Blackboard](https://lms.gvsu.edu){:target="_blank"}!**
+
+---
+
+## Resources
+
+Here are a list of resources I've collected that might help out.
+
+### Internet of Things
+
+### CircuitPython
+
+### Git/GitHub-Related
+
+* [git - the simple guide](http://rogerdudler.github.io/git-guide/){:target="_blank"}
+* [Git Guide](https://github.com/git-guides){:target="_blank"}
+* [Git Book](https://git-scm.com/book/en/v2/){:target="_blank"}
+* [How to Get Started with GIT and work with GIT Remote Repo](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Git_HowTo.html){:target="_blank"}
+* [A Simple GitHub Tutorial](https://old.benjaminashbaugh.me/code/simple-git-github-tutorial){:target="_blank"}
+* [Basic Git Commands (c/o Dr. Dowling)](https://docs.google.com/document/d/1uy1sltx6kQiiIRy_UdUoZsQknsmrcQjJGbfvhCCsK7Y/edit){:target="_blank"}
+* [Git Tutorial (c/o Dr. Dowling)](https://docs.google.com/document/d/10EARJZhLLDXspfl4g1P3SS2zbHTWR1ru9ppP3W-NaT4/edit){:target="_blank"}
+
+### Other
+
+* [Bitsy - Interactive Syllabus](https://efredericks.github.io/CIS-three-fitsy/){:target="_blank"}
+* [Team Communication](https://asana.com/resources/team-communication){:target="_blank"}

@@ -13,25 +13,27 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Just the Class
-tagline: A Jekyll template for course websites
-description: A modern, highly customizable, responsive Jekyll template for course websites
-author: Kevin Lin
-baseurl: '/just-the-class' # the subpath of your site, e.g. /blog
-url: 'https://kevinl.info' # the base hostname & protocol for your site, e.g. http://example.com
+title: CIS373
+tagline: 
+description: Course website 
+author: Erik Fredericks
+baseurl: '/gvsu-cis373' # the subpath of your site, e.g. /blog
+url: 'https://efredericks.github.io/gvsu-cis373' # the base hostname & protocol for your site, e.g. http://example.com
+#baseurl: ''
+# url: 'http://localhost:4000' # the base hostname & protocol for your site, e.g. http://example.com
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE"]
 
 # Theme settings
-remote_theme: just-the-docs/just-the-docs@v0.7.0
+remote_theme: just-the-docs/just-the-docs@v0.3.3
 color_scheme: light
 search_enabled: true
 heading_anchors: true
 permalink: pretty
 aux_links:
-  Kevin Lin:
-    - 'https://kevinl.info'
-  Just the Class on GitHub:
-    - 'https://github.com/kevinlin1/just-the-class'
+  Blackboard:
+    - 'https://lms.gvsu.edu'
+  Erik Fredericks:
+    - 'http://efredericks.net'
 footer_content:
 
 # Collections for website data
@@ -47,9 +49,7 @@ defaults:
       type: staffers
     values:
       layout: staffer
-      height: 300
       subpath: '/assets/images/'
-      width: 300
   - scope:
       path: ''
       type: modules
@@ -73,3 +73,6 @@ compress_html:
   startings: []
   blanklines: false
   profile: false
+
+plugins:
+  - jekyll-seo-tag
