@@ -69,9 +69,14 @@ All assignments are due by 11:59pm on the date they are due.  Please check Black
 
 Here are a list of resources I've collected that might help out.
 
-### Internet of Things
+### Bluefruit Express
+
+* [Adafruit Bluefruit Express](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit?view=all){:target="\_blank"}
 
 ### CircuitPython
+
+* [CircuitPython Documentation](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-documentation){:target="\_blank"}
+* [CircuitPython Homepage](https://circuitpython.org/){:target="\_blank"}
 
 ### Git/GitHub-Related
 
@@ -85,5 +90,4 @@ Here are a list of resources I've collected that might help out.
 
 ### Other
 
-* [Bitsy - Interactive Syllabus](https://efredericks.github.io/CIS-three-fitsy/){:target="_blank"}
 * [Team Communication](https://asana.com/resources/team-communication){:target="_blank"}
