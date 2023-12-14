@@ -25,23 +25,25 @@ seo:
 
 ## Course Description
 
-* T 
-* B
-* D
+This course introduces students to mobile, ubiquitous, pervasive, and Internet-of-Things (IoT) computing systems and services. Students will develop design skills for pervasive software development using different device platforms. It also provides an overview of future trends and ongoing research in these fast-growing areas. 
 
 ---
 
 ## Learning Objectives
 
-TBD
+After successful completion of the course, the students will be able to:
+
+1. Analysis/Identify: Identify aspects of mobile, ubiquitous and pervasive computing systems.
+2. Analysis/Analyze: Analyze the current problems in pervasive systems and the need for using the IoT as a solution vehicle.
+3. Adaptation/Develop: Develop research skills to stay current with the rapidly changing nature of data acquisition and technologies in the IoT sensor based systems.
+4. Adaptation/Build: Build Internet of Things (IoT) solutions.
+5. Application/Apply: Apply defensive security techniques to protect IoT infrastructure
 
 ---
 
 ## Lecture
 
-Class meets 1 time a week in person.  Typically class will comprise a lecture with some in-class assignments sprinkled throughout.  These are due the **next day by 11:59pm**.  Ensure you keep up on these, as they factor into the Participation part of your grade.  
-
-**Note**: I will not accept late in-class assignment submissions - no exceptions.
+Class meets 1 time a week in person.  Typically class will comprise a lecture, discussion, and a lab.  
 
 ---
 
@@ -56,7 +58,6 @@ There will be a half-semester term project.  Check out the [term projects page](
 All assignments are due by 11:59pm on the date they are due.  Please check Blackboard regularly for upcoming due dates.  If you are struggling or are having problems, please contact me in advance.  If you message me or email me the night something is due I will most likely not accept your reasoning.  If you get in touch early then we can work it out.
 
 * Individual and team assignment late penalty: 10% per day (including weekends)
-* Late in-class assignment submissions are **not accepted**
 
 ### Submissions
 
