@@ -69,9 +69,9 @@ All assignments are due by 11:59pm on the date they are due.  Please check Black
 
 Here are a list of resources I've collected that might help out.
 
-### Bluefruit Express
+### Adafruit Circuit Playground Bluefruit 
 
-* [Adafruit Bluefruit Express](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit?view=all){:target="\_blank"}
+* [Adafruit Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit?view=all){:target="\_blank"}
 
 ### CircuitPython
 
