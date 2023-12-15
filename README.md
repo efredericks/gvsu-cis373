@@ -43,7 +43,7 @@ After successful completion of the course, the students will be able to:
 
 ## Lecture
 
-Class meets 1 time a week in person.  Typically class will comprise a lecture, discussion, and a lab.  
+Class meets 1 time a week in person.  Typically class will comprise a lecture, discussion, and a lab.  Please ensure you bring your hardware kit (Circuit Playground + connectors) to each class. 
 
 ---
 
@@ -62,7 +62,19 @@ All assignments are due by 11:59pm on the date they are due.  Please check Black
 ### Submissions
 
 * All course content is hosted on this page.
-* **All assignment submissions are to be submitted via [Blackboard](https://lms.gvsu.edu){:target="_blank"}!**
+* **All assignment submissions are to be submitted via [Blackboard](https://lms.gvsu.edu){:target="\_blank"}!**
+
+---
+
+## Hardware Kit
+
+The hardware kit available in the GVSU Laker store is **required**.  It should comprise:
+
+* Circuit Playground Bluefruit - Bluetooth Low Energy: [https://www.adafruit.com/product/4333](https://www.adafruit.com/product/4333){:target="\_blank"}
+* MicroUSB to USB cable with data line (data line required otherwise the device can't be programmed): [https://www.adafruit.com/product/592](https://www.adafruit.com/product/592){:target="\_blank"}
+* Set of alligator clip leads (12): [https://www.adafruit.com/product/1008](https://www.adafruit.com/product/1008){:target="\_blank"}
+
+Labs and homework assignments will be focused around the Circuit Playground and we will be using them in the first class - ensure you're prepared for day 1!
 
 ---
 
