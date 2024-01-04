@@ -23,10 +23,10 @@ title: Important Dates - Winter 2024
   : Classes end (all materials due)
 
 {: .label .label-red } Exam
-: TBD
+: February 22, 6:00pm - 8:00pm
   : Midterm exam
 
 
 {: .label .label-red } Exam
-: TBD
+: April 25, 6:00pm - 8:50pm
   : Final exam
