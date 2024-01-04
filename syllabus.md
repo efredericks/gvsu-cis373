@@ -7,8 +7,7 @@ description: >-
 
 # Syllabus
 
-* [Fall 2023](/assets/Syllabus_F2023_CIS350-01_Fredericks.pdf){:target="_blank"}
-* [Bitsy - Interactive Syllabus](https://efredericks.github.io/CIS-three-fitsy/){:target="_blank"}
+* [Winter 2024](/gvsu-cis373/assets/CIS373_W2024_Fredericks_Syllabus.pdf){:target="_blank"}
 
 # Plagiarism Policy
 
@@ -29,6 +28,3 @@ For additional reference: [GVSU Plagiarism Policy](https://www.gvsu.edu/istudent
 If I tell you that you must submit an assignment individually, that means that I don't want to see multiple copies of the same submission.  You must write down your own ideas and do your own work.  Generally I don't mind if you work together on an assignment, but there should be a clear distinction in submissions.  
 
 For additional information: [GVSU Cheating Policy](https://www.gvsu.edu/policies/policy.htm?policyId=8799C8A8-E162-8E9D-D683B2A9FD5BC864&search=cheating)
-
-
-
