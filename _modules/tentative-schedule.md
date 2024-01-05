@@ -1,9 +1,10 @@
 ---
-title: Slides for CIS373 - Pervasive Computing
+title: Slides and Readings for CIS373 - Pervasive Computing
 ---
 
 1
 : Introduction
+  : (Read prior to class) [The Computer for the 21st Century - Weiser](/gvsu-cis373/assets/weiser-1991-ubiquitous.pdf)
 
 2
 : System Architectures 
