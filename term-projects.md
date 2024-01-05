@@ -38,7 +38,7 @@ Unfortunately this is the first time I've run this class, so I don't have prior 
 
 ## Project Tips
 
-* Ensure you pick something achievable for your team.  For example, if nobody has any C experience it might not make sense to write your project in C.  Conversely, if there is something you *really want to learn* then this might be a good opportunity to do that.  Just ensure that you scope your project appropriately (e.g., don't shoot for an MMO if you've never written networking code before).
+* Ensure you pick something achievable for your team.  For example, if nobody has any C experience it might not make sense to write your project in C.  Conversely, if there is something you *really want to learn* then this might be a good opportunity to do that.  Just ensure that you scope your project appropriately (e.g., don't shoot for an MMO if you've never written networking code before, especially on embedded devices).
 * Pick a project that *you've always wanted to work on, but never have had time to do that*.  I view this project as a forced push to do something interesting.  I don't know about you, but I tend to start projects and never finish them unless I have a forced deadline.
 * Be proud of what you've worked on - ideally this will be part of your project portfolio that you can show off to future employers.
 * If you are using starter code, libraries, tutorials, etc., ensure that you cite your source in your project documentation.
