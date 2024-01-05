@@ -15,70 +15,36 @@ description: >-
 1. TOC
 {:toc}
 
-One thing to keep in mind is that I will be keeping an eye on your commit history, watching your interactions, keeping tabs, etc.  Ensure that you put in an equal amount of effort!  If you are the type of student that lets your team members do all the work, expect your grade to be scaled appropriately.
+Your **overall task** is to create a functioning prototype of something related to pervasive computing / IoT.  Note that this is about a *half*-term project.  If you wish to start at the very beginning of the class because you want to use this as an excuse to build something really incredible feel free to chat with me when you have a thought.
 
-Your **overall task** is to create a functioning product that uses the software engineering techniques we talk about in class.  Your project deliverables will approximately follow what we're talking about in class.
+Project teams can be from 1 to 3 people.  Check the Introduction slides as well - you have the option of going above and beyond for other opportunities as well!
 
 ---
 
 ## Project Responsibilities
 
-1. Form a project team and decide on your project
-2. Setup a GitHub repository for your team (you'll fork my [starter repository](https://github.com/gvsu-cis350/base))
-  * At this point, you will start having weekly meetings **and** checking in your minutes to your repository
-3. Create Use Cases for your project
-4. Create a Software Requirements Specification
-5. Develop a functioning prototype // minimum viable product
-6. Present your progress about halfway through the semester
-7. Present your final product at the end of the semester
-8. Evaluate your teammates at the end of the semester
+1. Form a project team (if desired) and decide on your project
+2. Develop a project proposal
+3. Provide updates as requested
+4. Deliver a final presentation and demonstration (last week of class)
 
 ---
 
 ## Project Examples
 
-Your team has the option to choose whatever project you wish to work on (pending approval and scoping, naturally).  Note: you can use *whatever* language you want.  Feel free to use pre-existing libraries and/or development environments (e.g., Unity, Godot, RPGMaker, etc.) to get you going - the focus is on the **process**.  However, if you have no pre-defined expectations of what you want to work on then this list may be helpful to get you thinking:
-
-### Games
-
-* Roguelike
-* Procedurally-generated 2D space game
-* Role-playing games
-* 2D platformer
-* 2D shmup
-* Halo clone with multiplayer
-* Text adventure
-* Interactive fiction
-* 1st-person horror VR 
-
-### Non-games
-
-* Crypto tracker
-* Cloud-based pentesting suite
-* Disc golf finder (Arduino + RFID)
-* Sensor monitor (Rasperry Pi + sensors + display)
-* Fitness tracker
-* Hiking tracker
+Unfortunately this is the first time I've run this class, so I don't have prior examples of others' term projects.  However, a good search term for getting ideas is 'maker projects' as well as the list of projects up on [Adafruit Learn](https://learn.adafruit.com/){:target="\_blank"}.
 
 ---
 
 ## Project Tips
 
-* Ensure you pick something achievable for your team.  For example, if nobody has any Python experience it might not make sense to write your project in Python.  Conversely, if there is something you *really want to learn* then this might be a good opportunity to do that.  Just ensure that you scope your project appropriately (e.g., don't shoot for an MMO if you've never written networking code before).
+* Ensure you pick something achievable for your team.  For example, if nobody has any C experience it might not make sense to write your project in C.  Conversely, if there is something you *really want to learn* then this might be a good opportunity to do that.  Just ensure that you scope your project appropriately (e.g., don't shoot for an MMO if you've never written networking code before).
 * Pick a project that *you've always wanted to work on, but never have had time to do that*.  I view this project as a forced push to do something interesting.  I don't know about you, but I tend to start projects and never finish them unless I have a forced deadline.
 * Be proud of what you've worked on - ideally this will be part of your project portfolio that you can show off to future employers.
 * If you are using starter code, libraries, tutorials, etc., ensure that you cite your source in your project documentation.
-* **DO NOT** simply clone/copy someone else's project (either from this class or the Internet) and call it your own without significant iteration.  For example, you can use the Unity tutorials or microgame starters as long as you **significantly extend** them.
-* Keep up with your weekly meetings and keep in contact with your teammates.  If you wait until a deadline it is going to be *significantly* more stressful than if you make progress throughout the semester.
-* I will not be micromanaging your projects - that is up to your teams.  If you are not making appropriate progress then that will be reflected in your grade!
+* **DO NOT** simply clone/copy someone else's project (either from this class or the Internet) and call it your own without significant iteration.  For example, you can use the Adafruit tutorials as long as you **significantly extend** them.
 
 ---
-
-## Weekly Meetings
-
-Each week your team is required to meet (except where otherwise noted) and to create and submit a Meeting Minutes document.  I have a [template](https://github.com/gvsu-cis350/base/tree/master/meetings) in the project start repository for you to fill out.  Ensure you check in your minutes by each week's due date.
-
-Note: you are expected to have a minimum of **eight** meeting minutes posted to your repositories at appropriate dates.
 
 ## Team Member Issues
 
