@@ -8,3 +8,5 @@ description: >-
 # Lab Manuals
 
 {:.no_toc}
+
+1. [Lab 1](/gvsu-cis373/assets/labs/lab1)
