@@ -23,6 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
+* HW1 - 01/19 by 11:59pm
+
 ## Course Description
 
 This course introduces students to mobile, ubiquitous, pervasive, and Internet-of-Things (IoT) computing systems and services. Students will develop design skills for pervasive software development using different device platforms. It also provides an overview of future trends and ongoing research in these fast-growing areas. 
