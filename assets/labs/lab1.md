@@ -52,14 +52,9 @@ After you get it installed, we need to set it up for our device and for the Circ
 
 I don't have your kits exactly - so it may make sense to check your bootloaders are up to date and that CircuitPython is installed.
 
-This is from the [Adafruit guide](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit?view=all#):
+When you plug in your device, you should see a `CIRCUITPY` folder popup.  If you do not, then we need to install Circuit Python.  What I have found is that running Circuit Python 7.3.3 seems to be the path of least resistance (the latest stable version is 8 - and for that we have to update the bootloader - which is a pain on our devices).
 
-> To check whether you need to update the bootloader, double-click the reset button, and look in the ...BOOT drive for INFO_UF2.TXT. Inside that file, check the version number. It should be 0.6.1 or newer. 
-
-{: .warning }
-Note: I did this on my device and it temporarily shows the bootloader files.  It **should** not delete things that you may already have on there, if you've already done it.  That being said, it doesn't hurt to backup your code files if you're concerned.
-
-When you plug in your device, you should see a `CIRCUITPY` folder popup.  If you do not, then we need to install Circuit Python.
+My recommendation, if you see `CIRCUITPY` don't worry about this section for now.  If you don't, drag and drop this `uf2` file onto the `CPLAYBTBOOT` directory (double-click the `reset` button to access the drive): [https://adafruit-circuit-python.s3.amazonaws.com/bin/circuitplayground_bluefruit/en_US/adafruit-circuitpython-circuitplayground_bluefruit-en_US-7.3.3.uf2](https://adafruit-circuit-python.s3.amazonaws.com/bin/circuitplayground_bluefruit/en_US/adafruit-circuitpython-circuitplayground_bluefruit-en_US-7.3.3.uf2)
 
 {: .important }
 > **FOLLOW THIS GUIDE TO SETUP CIRCUIT PYTHON**: 
