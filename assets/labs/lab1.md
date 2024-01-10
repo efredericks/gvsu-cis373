@@ -537,6 +537,7 @@ while not done:
     pixels.show()
 
     sleep(.01)
+    gc.collect()
 
 print("Program done - exiting.")
 ```
