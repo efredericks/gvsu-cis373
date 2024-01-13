@@ -68,6 +68,8 @@ And then...
 >
 > [https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuit-playground-bluefruit-circuitpython-libraries](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuit-playground-bluefruit-circuitpython-libraries)
 
+You're going to need the `neopixel.mpy` library from the above library download.  Open up the ZIP file, go into the `lib` directory, and copy `neopixel.mpy` into the `lib` directory on your device.
+
 
 ## But first...
 
