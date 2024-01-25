@@ -118,6 +118,9 @@ while not done:
 print("Program done - exiting.")
 ```
 
+{: .highlight }
+Walk your new partners through your device, its capabilities, what we're doing here in this section, etc.  
+
 ### Audio Imports
 
 Let's get setup for audio now.  Add the following imports:
@@ -167,6 +170,9 @@ We also now have our first function!  `play_file` will be called whenever we pre
 
 {: .warning }
 If you look around the internet for guides you'll probably see references to the `adafruit_circuitplayground` library.  It will most likely conflict with the way we're handling the speaker as it likes to self-initialize everything.
+
+{: .highlight }
+Make sure you aren't seeing any errors in the Serial console here! 
 
 ### Tone Generator
 
@@ -267,6 +273,9 @@ So, here we loop through all of our touch pads and play the sound file at the co
 The eagle-eyed programmer might notice we're not checking if the files actually exist or were loaded in at all - it just kind of happens when you try to use it.  If you have a naming error, or a file error, then you won't notice it until you activate that particular file.  Not the best programming practices really!
 
 Try out your beats!  You should hear a distinct sound for each touch pad you hit.  If you only have a few samples either download the pack from above or simply duplicate the touch pad hits.
+
+{: .highlight }
+Explore different samples and combinations.  Feel free to come up front and connect to the speakers to try things out.  Mess around with delay timing to get a better "feel" when you play a beat.
 
 ---
 
