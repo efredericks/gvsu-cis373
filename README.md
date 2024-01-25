@@ -23,7 +23,7 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 2 Signoff - 01/19 by 11:59pm
+* Lab 3 Writeup - 01/26 by 11:59pm -- you need to submit this!
 * HW2 - 01/26 by 11:59pm
 
 ## Course Description
