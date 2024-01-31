@@ -372,17 +372,6 @@ Here is a short overview of what should happen:
     * When a sensor value is at or above its maximum state, output a value of 255 to the pixel array in the correct color (i.e., if temperature, map to red; if light, map to green).
     * When a sensor value is in between resting and maximum, output a mapped value between (0, 255) to the corresponding pixels in the correct color.
 
----
-
-For example, it should look like this:
-
-
-Q's:
-
-It's very jittery - why and how to fix?
-What happens if you don't record max temp?
-What happens if you cover up the
-
 # References
 
 * [Temperature sensor](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express/temperature)
