@@ -10,7 +10,8 @@ title: Slides and Readings for CIS373 - Pervasive Computing
 : [System Architectures](/gvsu-cis373/assets/slides/CIS373-2-System-Architectures.pdf)
 
 3
-: Wireless Sensor Networks
+: [Wireless Sensor Networks (1)](/gvsu-cis373/assets/slides/CIS373-3-WSN-1.pdf)
+: [Wireless Sensor Networks (2)](/gvsu-cis373/assets/slides/CIS373-4-WSN-2.pdf)
 
 4
 : Introduction to Research! 
