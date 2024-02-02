@@ -24,7 +24,7 @@ seo:
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
 * Lab4 Signoff - 02/01 by 11:59pm
-* IC1 - 02/01 by 11:59pm
+* Lab4 Questions - 02/07 by 11:59pm
 
 ## Course Description
 
