@@ -13,3 +13,5 @@ description: >-
 2. [Lab 2](/gvsu-cis373/assets/labs/lab2)
 3. [Lab 3 (in Manitou 2nd floor computer lab)](/gvsu-cis373/assets/labs/lab3)
 4. [Lab 4](/gvsu-cis373/assets/labs/lab4)
+5. [Lab 5](/gvsu-cis373/assets/labs/lab5)
+
