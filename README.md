@@ -23,8 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab6 Signoff - 02/29 by 11:59pm
-* Lab6 Writeup - 03/15 by 11:59pm
+* Lab 6 Signoff - 03/01 by 11:59pm
+* Lab 6 Writeup - 03/15 by 11:59pm
 
 ## Course Description
 
