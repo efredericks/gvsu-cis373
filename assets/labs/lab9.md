@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 7
+title: Lab 9
 nav_exclude: True
 description: >-
-    Lab 7 page.
+    Lab 9 page.
 ---
 
 ## Table of contents
@@ -14,7 +14,7 @@ description: >-
 
 ---
 
-# Lab 7 - Accelerometer and Visualizations!
+# Lab 9 - Accelerometer and Visualizations!
 
 In this lab we're going to transmit sensor data (specifically the accelerometer) to a webpage that has Bluetooth enabled.  
 

@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 6
+title: Lab 8
 nav_exclude: True
 description: >-
-    Lab 6 page.
+    Lab 8 page.
 ---
 
 ## Table of contents
@@ -14,7 +14,7 @@ description: >-
 
 ---
 
-# Lab 6 - Sharing Sensor Data!
+# Lab 8 - Sharing Sensor Data!
 
 This week we're going to keep it simple.  Let's share some data.  We're going to send sensor data from your devices to a central node (so essentially single-hop flooding).  You're going to measure sensor data and broadcast it to the  network. 
 
