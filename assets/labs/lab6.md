@@ -14,38 +14,15 @@ description: >-
 
 ---
 
-# Lab 6 - Accelerometer and Sharing!
+# Lab 6 - Sharing Sensor Data!
 
-14 - AR lab
-21 - sensor net lab
-28 - accelerometer + security lab?
-4 - work on term project
-11 - work on term project
-18 - presentations
+This week we're going to keep it simple.  Let's share some data.  We're going to send sensor data from your devices to a central node (so essentially single-hop flooding).  You're going to measure sensor data and broadcast it to the  network. 
 
-IoT:
+A central node (me) will be setup to receive that data.  You will setup your devices as beacons to send it out.  Consider yourselves motes in a large sensor network.
 
-Get sensor measurements setup
-Install BLE broadcastnet
-broadcast 2 sensor readings (prepend name to value)
-extra credit - pick up a friend's reading and rebroadcast
+We're also going to do some encryption and decryption since security is a concern for us as well (though that will be homework for you and the topic of a future lecture).
 
-
-
-
-accel
-https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html
-https://learn.adafruit.com/bluetooth-le-broadcastnet-sensor-node-raspberry-pi-wifi-bridge/install-pi-bridge-software
-https://github.com/adafruit/Adafruit_CircuitPython_BLE_BroadcastNet/blob/main/examples/ble_broadcastnet_blinka_bridge.py
-
-battery broadcast: https://github.com/adafruit/Adafruit_CircuitPython_BLE_BroadcastNet/blob/main/examples/ble_broadcastnet_battery_level.py
-
-hashlib: https://github.com/adafruit/Adafruit_CircuitPython_hashlib
-
-
-We're also going to do some encryption and decryption since security is a concern for us as well.
-
-However, the libraries available for our devices are significantly limited in terms of handshakes (hence why when we broadcasted our sensor readings there was no security).  So, we're going to make do with the `hashlib` library.
+However, the libraries available for our devices are significantly limited in terms of handshakes (hence why there was no security when we were broadcasting our sensor readings).  So, we're going to make do with the `hashlib` library.
 
 {: .note } 
 Essentially, you would need to manually code a handshake prior to sending/receiving data if you wanted a properly-secured environment.
@@ -57,170 +34,289 @@ Essentially, you would need to manually code a handshake prior to sending/receiv
 
 Before you leave for the day, (minimally) show me:
 
-* Your Bluefruit printing accelerometer data for all 3 axes.
+* Your Bluefruit broadcasting CPU temperature over Bluetooth. 
 
 ## Make your backup
 
-We're going to be "starting fresh" and then merging our two scripts.  So, backup last week's code and create a new `code.py` file.
+We're going to be "starting fresh" and creating two separate scripts.  So, backup last week's code and create a new `code.py` file.
 
 ## Getting started
 
-No boilerplate today!  We're going to start with getting Bluetooth going and then copy lines over to your lab 4 code.
+First, add the following libraries to your devices:
 
-## First, what is UART?
+1. `adafruit_ble_broadcastnet`
+2. `adafruit_circuitplayground`
+3. `adafruit_hashlib`
 
-[Universal asynchronous receiver-transmitter (UART)](https://www.circuitbasics.com/basics-uart-communication/) is a way to send data, as byte streams, between two endpoints. 
-It is pretty common for communication in embedded systems.
-The nice thing is that we can use UART to send data over Bluetooth!
+## First, what are beacons?
 
-## Bluetooth
+A [beacon](https://kontakt.io/blog/what-is-a-beacon/) is a sensor node that makes a controlling node aware of local data (essentially, a mote that broadcasts some measured value or checks to see if another node is in range).  We'll use the `adafruit_ble_broadcastnet` library to allow our devices to act as beacons.  Note that the transmission code is a bit different than prior Bluetooth connection labs - here we want to blast data out and don't particularly care who receives it.
 
-Let's start off with creating a Bluetooth connection.  Unfortunately it isn't as easy as activating it and joining like you would with your phone or a pair of earbuds.
-(A lot of this code comes from [Adafruit](https://learn.adafruit.com/circuitpython-ble-libraries-on-any-computer/ble-uart-example) - we'll be customizing it for data logging though).
+{: .note }
+Consider: this is the "dumb" method of sending out data.  What would we need to do to make it more intelligent?  For instance, forwarding received data from other nodes?
 
-First, you're going to need a library to enable Bluetooth.
-Copy over the `adafruit_ble` folder from your downloaded bundle of libraries to your device's `lib` folder.
+<div align="center">
+  <img src="https://www.minew.com/product/beacon-sensor/beacon_files/1-1.jpg" alt="beacon ad" />
+</div>
 
-Then, let's try it out!  First, a custom advertisement to make sure it works.
+### Basic broadcasting
+
+We're going to slightly change things up and use the `adafruit_circuitplayground` library to access sensor data.  One it will give you a different library to try out, and two it will make reading accelerometer data a heck of a lot easier.
+
+{: .warning }
+Your old code for reading the `board` and `NeoPixels` will not work with this lab.  You will need to use the `adafruit_circuitplayground` library for handling those types of things!
+
+This code is slightly modified from here: [https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/examples.html](https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/examples.html)
 
 ```
+import time
+import microcontroller
+import adafruit_ble_broadcastnet
+from adafruit_circuitplayground import cp
+import gc
+
+print("This is BroadcastNet sensor:", adafruit_ble_broadcastnet.device_address)
+
+while True:
+    # Create measurement object, assign temperature, and then broadcast it
+    measurement = adafruit_ble_broadcastnet.AdafruitSensorMeasurement()
+    measurement.temperature = (
+        microcontroller.cpu.temperature  # pylint: disable=no-member
+    )
+    print(measurement)
+    adafruit_ble_broadcastnet.broadcast(measurement, broadcast_time = 1)
+
+    gc.collect()
+    time.sleep(2)
+```
+
+This code will retrieve the CPU temperature, package it into an `AdafruitSensorMeaurement` object, and then send it over BLE broadcast.  Check out this page for a reference of all the different types of measurements you can send: [https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html](https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html).
+
+{: .note }
+Also consider: what if we want to use a "non-standard" reading?  What if we wanted to send a string? 
+
+### Testing your outputs
+
+Note: testing this will be tricky as the Bluefruit app *will not work* for generic Bluetooth broadcasts.  You have two options for testing: check with me and my "sink node" to make sure data is going through (highly-recommended before you leave or during office hours), or check your Serial output for a measurement object.
+
+Your output should look like this (note the readings for temperature, acceleration, and light included within the packet):
+
+```
+This is BroadcastNet sensor: e8318f349bbc
+<AdafruitSensorMeasurement temperature=35.267 acceleration=mdf_tuple(x=-0.191523, y=0.114914, z=9.46126) light=316.0 sequence_number=0 >
+```
+
+### The deliverables
+
+You see how you can send data over broadcast.  Any device that knows how to read a BLE broadcast can pick up this message.
+
+For the homework, add the following readings (this will involve checking the `Adafruit_CircuitPlayground` API to know how to get those values and creating `measurement` attributes on the `AdafruitSensorMeaurement` object you created).  The links are at the bottom of this page for both of these objects.
+
+* **Replace CPU temperature with air temperature**
+
+* **Add the current light value**
+
+* **Add the x, y, and z accelerometer readings**
+
+(To save you some headache, here is how you access the accelerometer - you will need to create a tuple object to assign it to the `acceleration` property):
+
+```
+x, y, z = cp.acceleration
+```
+
+## Hashing and handshaking
+
+Your homework will have you using the `adafruit_hashlib` library to encrypt data (and compare hashed data).  The workflow will be to have a secret password on your local device and hash it.  Your phone (over the Bluetooth Connect app) will send a string and you will compare the hashed value.  
+
+Kind of like how usernames/passwords are handled in some websites.  The password is stored hashed (**NEVER PLAINTEXT**) and compared with a hash of the user's input.
+
+### Bluetooth boilerplate
+
+To help you out with the Bluetooth connections (there were some growing pains the last time we did this), here is a bit of boilerplate to get you started.  What happens here is that the code waits for a Bluetooth connection, then starts running forever, however will only do things if a Bluetooth connection is active within that loop (for instance, we don't want to be handling data if the connection was dropped...).
+
+{: .note }
+Ensure you rename your previous `code.py` file to `code.yourlastname.beacon.py` (you'll be submitting it separately).
+
+```
+import adafruit_hashlib as hashlib
 from adafruit_ble import BLERadio
 from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
 from adafruit_ble.services.nordic import UARTService
+import time
+import gc
+
+# Create Bluetooth objects
+ble = BLERadio()
+uart = UARTService()
+advertisement = ProvideServicesAdvertisement(uart)
+ble.name = "yourlastname-BlueFruit"
+
+# Advertise and wait for connection
+ble.start_advertising(advertisement)
+print("Waiting to connect")
+while not ble.connected:
+    pass
+print("Connected")
+
+# Forever loop
+while True:
+    # only do things with bluetooth if connected
+    if ble.connected:
+        line = uart.readline()  # receive data from UART
+        line = line.strip()     # remove trailing newline
+        print(line)
+
+    gc.collect()
+    time.sleep(0.5)
+```
+
+### Basic hashing
+
+As mentioned we'll use `adafruit_hashlib` for our encryption.  Import it!  Note, the following code is a snippet from the hashlib documentation:
+
+```
+import adafruit_hashlib as hashlib
+
+# Create an MD5 message
+print("--MD5--")
+byte_string = b"CircuitPython"
+m = hashlib.md5()
+# Update the hash object with byte_string
+m.update(byte_string)
+# Obtain the digest, digest size, and block size
+print(
+    "Msg Digest: {}\nMsg Digest Size: {}\nMsg Block Size: {}".format(
+        m.hexdigest(), m.digest_size, m.block_size
+    )
+)
+```
+
+So what you should get out of that block of code is that you need (1) a string to encrypt, a specific encryption algorithm to run (in this case, MD5), and a way to access the output (for us, in `m.hexdigest()`).
+
+Your job for the homework (as specified below), is to store a string on your device, encrypt it with MD5, receive a string from UART (i.e., sending the string from Bluetooth Connect to your device), and then checking if it was valid or not. 
+
+As a hint, you'll need to create a second hash object to handle the incoming string.
+
+Here's a video of what I'd expect to see: TBD - RECORD VIDYA
+
+
+
+## Homework - Hashing data
+
+For your deliverables, your code must do two things:
+
+1. `code.yourlastname.beacon.py`: Broadcast accelerometer data, temperature data (from the sensor, NOT the CPU), and light data.  I will be testing with the same node that we had in the lab, so I will be looking at my Serial output for your data.  
+
+2. `code.yourlastname.hash.py`: Receive a string over Bluetooth UART, hash it using `MD5`, and compare it to a known key.  Your program should print to the Serial console that a received string was either valid or invalid, and that comparison **must** be using the hashed values, not plaintext!
+
+The key you need to encrypt is:
+
+> CIS373 is fun and I am not being coerced into saying that as part of a deliverable
+
+You will submit **two separate code files** for this lab to avoid having the Bluetooth elements conflict with each other.  Name the first one `code.yourlastname.beacon.py` and the second `code.yourlastname.hash.py`.
+
+## Want extra credit? 
+
+Two options here - IN YOUR REPORT LET ME KNOW WHAT YOU DID SO I CAN CHECK IT!
+
+1. Include other data within the packet.  Acceleration, light, and temperature are the minimum required.  Additional points for every extra "valid" data included (including custom data).
+
+2. Have your LEDs react to the received string.  If it is invalid, show red.  If it is valid, show green.  Note, since we're using `adafruit_circuitplayground` you will have to handle LEDs differently - it is up to you to lookup how [+15].
+
+3. Set your device up to re-broadcast data from other nodes (essentially, flooding). [+30].  If you do this, tell me what I need to do for sending data to your device as well as receiving.
+
+# References
+
+* [Adafruit BLE broadcastnet](https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/examples.html)
+* [Adafruit BLE broadcatnet API](https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html)
+* [Adafruit CircuitPlayground Library reference](https://docs.circuitpython.org/projects/circuitplayground/en/latest/examples.html)
+* [Adafruit Acceleration](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express/acceleration)
+* [CircuitPython Hashlib](https://docs.circuitpython.org/projects/hashlib/en/latest/)
+* [Simple hashlib example (various forms of hashing)](https://docs.circuitpython.org/projects/hashlib/en/latest/examples.html)
+* [What is a Beacon?](https://kontakt.io/blog/what-is-a-beacon/)
+
+
+-----------------------
+
+import adafruit_hashlib as hashlib
+from adafruit_ble import BLERadio
+from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
+from adafruit_ble.services.nordic import UARTService
+import time
+
+#m = hashlib.sha256()
+#m.update(b"CircuitPython")
+
+# Create an MD5 message
+print("--MD5--")
+byte_string = b"CircuitPython"
+m = hashlib.md5()
+# Update the hash object with byte_string
+m.update(byte_string)
+# Obtain the digest, digest size, and block size
+print(
+    "Msg Digest: {}\nMsg Digest Size: {}\nMsg Block Size: {}".format(
+        m.hexdigest(), m.digest_size, m.block_size
+    )
+)
+
 
 ble = BLERadio()
 uart = UARTService()
 advertisement = ProvideServicesAdvertisement(uart)
+ble.name = "Fredericks-BlueFruit"
 
-while True:
-    ble.start_advertising(advertisement)
-    print("Waiting to connect")
-    while not ble.connected:
+print("Msg Hex Digest: {}\nMsg Digest Size: {}\nMsg Block Size: {}".format(
+        m.hexdigest(), m.digest_size, m.block_size))
+
+ble.start_advertising(advertisement)
+print("Waiting to connect")
+while not ble.connected:
         pass
-    print("Connected")
-    while ble.connected:
-        line = uart.readline()
-        if line:
-            print(line)
-```
+print("Connected")
 
-That's the code from Adafruit, with some bits trimmed.  It should allow your device to start broadcasting. 
-Pop open a Bluetooth scanner (your phone, laptop, etc.) to see if you can find your device.  It'll be labeled as `CIRCUITPYxxxx`, where the `xxxx` is some identifier particular to your device.
-
-{: .warning }
-Uh oh - there's 20+ other Circuit Playground devices in the room!  How do you know which is yours?
-
-<div align="center">
-  <img src="/gvsu-cis373/assets/images/LE_Connect_1.png" alt="Connect 1" />
-</div>
-
-Time to add a name to your device! 
-
-{: .note }
-I want to take you on a journey of how we all don't immediately know everything, including professors.  This single line of code took me about 6 hours on a Sunday to find - there is no documentation anywhere on the internet and no examples that I can find and nothing code-wise.  I was digging through Adafruit's GitHub repository to see how to make a custom name possible and all I got were esoteric references and code that would eventually break.  However, this all star made a video documenting the process: [John Park's CircuitPython Parsec: Bluetooth Naming](https://www.youtube.com/watch?v=nS10NxHRrXE).
-
-Under the `ble = ...` line, add the following (changing `MYLASTNAME`):
-
-```
-ble.name = "MYLASTNAME_Bluefruit"
-```
-
-That's it.  Scan again, you should see yours now!  You should also be able to connect as well with little headache.
-
-<div align="center">
-  <img src="/gvsu-cis373/assets/images/LE_Connect_2.png" alt="Connect 2" />
-</div>
-
-## Communication!
-
-Sadly, the lab computers don't do Bluetooth.  We have a few options here, but we'll just use our phones for now.  
-
-{: .note }
-If you want to play around with the app after we're done, you'll need custom code running - there are some examples here (note: I was not able to get the NeoPixel controller working as I think it is targeted for a different device): [https://learn.adafruit.com/circuitpython-nrf52840?view=all](https://learn.adafruit.com/circuitpython-nrf52840?view=all) 
-
-### If you have an Android phone...
-
-Get the [Bluefruit Connect](https://play.google.com/store/apps/details?id=com.adafruit.bluefruit.le.connect) app.
-
-### If you have an Apple phone...
-
-**Note - I don't have an iPhone and I haven't tested this**
-
-Get the [Bluefruit Connect](https://itunes.apple.com/us/app/adafruit-bluefruit-le-connect/id830125974) app.
-
-## In either app....
-
-Connect to your device!  There is no authentication at present - you can just directly connect.
-
-You should have the ability to view data being sent over the UART connection. Right now, it should be pretty empty, given that we're not sending over anything. 
-
-<div align="center">
-  <img src="/gvsu-cis373/assets/images/LE_Connect_3.png" alt="Connect 3" />
-</div>
-
-## Sending data
-
-For the purposes of this lab, we're going to consider our devices as sensor motes and your phones as loggers (obviously they aren't logging anything right now, but we can see data).
-
-Change your loop to read like this:
-
-```
-counter = 0
 while True:
-    uart.write("Counter: {0}".format(counter).encode("utf-8"))
-    counter += 1
-    sleep(1)
-```
+    if ble.connected:
+        line = uart.readline()
+        line = line.strip()
+        m2 = hashlib.md5()
+        m2.update(line)
+        print(line, m2.hexdigest())
+        
+        if (m.hexdigest() == m2.hexdigest()):
+            print("YOU WIN")
+            break
+    time.sleep(0.5)
 
-What *should* be happening now is that your Bluefruit is sending data over Bluetooth.  Look at your phone now and check the UART connection - you should be seeing data streaming now!
+HW: make LEDs light up green when password is sent, red if failed
 
-{: .note }
-A good homework opportunity!  While not *strictly* necessary (i.e., it will generally work without it), why do we need to encode the string as `utf-8` (also, what even is `utf-8`)?
+Q's: what is a sequence number?  
+what is broadcast_time?
+Why is flooding a possible issue in sensor nets?
+What kind of data does the accelerometer provide?
 
-## Merging them together
 
-This is going to be somewhat self-directed now, as you have to merge two files.  
+==REMOVE ME==
+21 - sensor net lab
+28 - accelerometer + security lab?
+4 - work on term project
+11 - work on term project
+18 - presentations
 
-Where your program *should* have been as of last week was to record temperature by default and show its output as red on the LED ring.  When you press a button it toggles to light and green LEDs.
+IoT:
 
-Let's get setup now for the final deliverable.  Rename your current files:
+Get sensor measurements setup
+Install BLE broadcastnet
+broadcast 2 sensor readings (prepend name to value)
+extra credit - pick up a friend's reading and rebroadcast -- make a handshake to "login" to your device
+==REMOVE ME==
 
-* `code.py` --> `code.bluetooth.py` 
+accel
+https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html
+https://learn.adafruit.com/bluetooth-le-broadcastnet-sensor-node-raspberry-pi-wifi-bridge/install-pi-bridge-software
+https://github.com/adafruit/Adafruit_CircuitPython_BLE_BroadcastNet/blob/main/examples/ble_broadcastnet_blinka_bridge.py
 
-* `code.lab4.py` back to `code.py`. 
+battery broadcast: https://github.com/adafruit/Adafruit_CircuitPython_BLE_BroadcastNet/blob/main/examples/ble_broadcastnet_battery_level.py
 
-You should have your sensor reading code as your main file that runs on startup. 
+hashlib: https://github.com/adafruit/Adafruit_CircuitPython_hashlib
 
-{: .note }
-It may be beneficial to make the delays for initializing your sensor readings a bit smaller so that you can work on your code without waiting forever.  The numbers were somewhat arbitrary, so feel free to change them.
-
-Your code should still follow the same structure as last time (toggle between temperature and light sensing), however:
-
-* If temperature reading is currently selected, send `Temperature: <current reading> F`
-
-* If light reading is currently selected, send `Light: <current reading>`
-
-{: .note }
-You don't need to send the counter anymore over UART either - that was just for testing.  Also, make sure the angle brackets don't show up in your output message!
-
-When you look at the app on your phone, you should be seeing temperature and light readings, depending on your button presses.
-
-That's it!  
-
-It should look like this when you're all done:
-
-<div align="center">
-  <img src="/gvsu-cis373/assets/images/LE_Connect_Temp.png" alt="Connect Temp" />
-  <br />
-  <img src="/gvsu-cis373/assets/images/LE_Connect_Light.png" alt="Connect Light" />
-</div>
-
-## Want extra credit? Log some information on your computer!
-
-This will require exploration on your part, however there are some excellent guides up on Adafruit for communicating with Python.  Essentially, write a Python script on your laptop that accepts the UART stream that your Bluefruit sends and log it to a file!
-
-# References
-
-* [Bluetoooth UART](https://learn.adafruit.com/circuitpython-ble-libraries-on-any-computer/ble-uart-example)
-* [Python - Writing to files](https://realpython.com/read-write-files-python/)
-* [Bluefruit LE Connect Basics](https://learn.adafruit.com/circuitpython-nrf52840/bluefruit-le-connect-basics)

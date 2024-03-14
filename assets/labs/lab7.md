@@ -247,8 +247,14 @@ If your device seems wonky in terms of how it reacts, check the orientation of t
 
 ## The homework
 
+For the lab, you have read the accelerometer, mapped it to LEDs, and sent data off to a webpage via Bluetooth.
 
-## Want extra credit?  Have your LEDs react to the direction you're tilting the device.
+Last week, we did a bit about security (ahead of schedule, oddly enough).  Take your accelerometer values and encrypt them!
+
+I'm going to be receiving the data you send and decrypting it.  
+
+
+### Want extra credit?  Have your LEDs react to the direction you're tilting the device.
 
 In the beginning of the lab we were setting LEDs based on a fairly naive check of our accelerometer data. One thing you could do is implement a "marble" type game where your accelerometer controls the position of the marble (pretend you have a marble on a board and tilting it changes its position).
 
