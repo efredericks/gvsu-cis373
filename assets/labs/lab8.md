@@ -164,11 +164,14 @@ while True:
     if ble.connected:
         line = uart.readline()  # receive data from UART
         line = line.strip()     # remove trailing newline
-        print(line)
+        if line:
+            print(line)
 
     gc.collect()
     time.sleep(0.5)
 ```
+
+If you want to see this working, connect to your Bluefruit with the phone app, go to the UART tab, and send a string.  You should see it printed in your Serial console.
 
 ### Basic hashing
 
@@ -197,10 +200,6 @@ Your job for the homework (as specified below), is to store a string on your dev
 
 As a hint, you'll need to create a second hash object to handle the incoming string.
 
-Here's a video of what I'd expect to see: TBD - RECORD VIDYA
-
-
-
 ## Homework - Hashing data
 
 For your deliverables, your code must do two things:
@@ -211,7 +210,7 @@ For your deliverables, your code must do two things:
 
 The key you need to encrypt is:
 
-> CIS373 is fun and I am not being coerced into saying that as part of a deliverable
+> CIS373 is fun
 
 You will submit **two separate code files** for this lab to avoid having the Bluetooth elements conflict with each other.  Name the first one `code.yourlastname.beacon.py` and the second `code.yourlastname.hash.py`.
 
@@ -234,89 +233,3 @@ Two options here - IN YOUR REPORT LET ME KNOW WHAT YOU DID SO I CAN CHECK IT!
 * [CircuitPython Hashlib](https://docs.circuitpython.org/projects/hashlib/en/latest/)
 * [Simple hashlib example (various forms of hashing)](https://docs.circuitpython.org/projects/hashlib/en/latest/examples.html)
 * [What is a Beacon?](https://kontakt.io/blog/what-is-a-beacon/)
-
-
------------------------
-
-import adafruit_hashlib as hashlib
-from adafruit_ble import BLERadio
-from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
-from adafruit_ble.services.nordic import UARTService
-import time
-
-#m = hashlib.sha256()
-#m.update(b"CircuitPython")
-
-# Create an MD5 message
-print("--MD5--")
-byte_string = b"CircuitPython"
-m = hashlib.md5()
-# Update the hash object with byte_string
-m.update(byte_string)
-# Obtain the digest, digest size, and block size
-print(
-    "Msg Digest: {}\nMsg Digest Size: {}\nMsg Block Size: {}".format(
-        m.hexdigest(), m.digest_size, m.block_size
-    )
-)
-
-
-ble = BLERadio()
-uart = UARTService()
-advertisement = ProvideServicesAdvertisement(uart)
-ble.name = "Fredericks-BlueFruit"
-
-print("Msg Hex Digest: {}\nMsg Digest Size: {}\nMsg Block Size: {}".format(
-        m.hexdigest(), m.digest_size, m.block_size))
-
-ble.start_advertising(advertisement)
-print("Waiting to connect")
-while not ble.connected:
-        pass
-print("Connected")
-
-while True:
-    if ble.connected:
-        line = uart.readline()
-        line = line.strip()
-        m2 = hashlib.md5()
-        m2.update(line)
-        print(line, m2.hexdigest())
-        
-        if (m.hexdigest() == m2.hexdigest()):
-            print("YOU WIN")
-            break
-    time.sleep(0.5)
-
-HW: make LEDs light up green when password is sent, red if failed
-
-Q's: what is a sequence number?  
-what is broadcast_time?
-Why is flooding a possible issue in sensor nets?
-What kind of data does the accelerometer provide?
-
-
-==REMOVE ME==
-21 - sensor net lab
-28 - accelerometer + security lab?
-4 - work on term project
-11 - work on term project
-18 - presentations
-
-IoT:
-
-Get sensor measurements setup
-Install BLE broadcastnet
-broadcast 2 sensor readings (prepend name to value)
-extra credit - pick up a friend's reading and rebroadcast -- make a handshake to "login" to your device
-==REMOVE ME==
-
-accel
-https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html
-https://learn.adafruit.com/bluetooth-le-broadcastnet-sensor-node-raspberry-pi-wifi-bridge/install-pi-bridge-software
-https://github.com/adafruit/Adafruit_CircuitPython_BLE_BroadcastNet/blob/main/examples/ble_broadcastnet_blinka_bridge.py
-
-battery broadcast: https://github.com/adafruit/Adafruit_CircuitPython_BLE_BroadcastNet/blob/main/examples/ble_broadcastnet_battery_level.py
-
-hashlib: https://github.com/adafruit/Adafruit_CircuitPython_hashlib
-
