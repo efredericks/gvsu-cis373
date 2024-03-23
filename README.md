@@ -23,8 +23,13 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 7 Writeup - 03/22 by 11:59pm
 * Lab 8 Writeup - 03/29 by 11:59pm
+
+* Term project presentation materials - April 17th
+
+* Term project presentations - April 18th
+
+* Term project deliverables - April 20th
 
 ## Course Description
 
