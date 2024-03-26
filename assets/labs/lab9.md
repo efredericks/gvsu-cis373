@@ -249,10 +249,7 @@ If your device seems wonky in terms of how it reacts, check the orientation of t
 
 For the lab, you have read the accelerometer, mapped it to LEDs, and sent data off to a webpage via Bluetooth.
 
-Last week, we did a bit about security (ahead of schedule, oddly enough).  Take your accelerometer values and encrypt them!
-
-I'm going to be receiving the data you send and decrypting it.  
-
+Last week, we did a bit about security (ahead of schedule, oddly enough).  Take your accelerometer values and encrypt them (print them to the terminal though)!
 
 ### Want extra credit?  Have your LEDs react to the direction you're tilting the device.
 
