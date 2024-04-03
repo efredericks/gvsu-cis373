@@ -23,7 +23,7 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 8 Writeup - 03/29 by 11:59pm
+* Term Project Progress - April 9th
 
 * Term project presentation materials - April 17th
 
