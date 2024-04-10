@@ -23,7 +23,7 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Term Project Progress - April 9th
+* Term Project Progress 2 - April 12th
 
 * Term project presentation materials - April 17th
 
