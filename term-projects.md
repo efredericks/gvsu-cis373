@@ -32,7 +32,20 @@ Project teams can be from 1 to 3 people.  Check the Introduction slides as well 
 
 ## Project Examples
 
-Unfortunately this is the first time I've run this class, so I don't have prior examples of others' term projects.  However, a good search term for getting ideas is 'maker projects' as well as the list of projects up on [Adafruit Learn](https://learn.adafruit.com/){:target="\_blank"}.
+Some past examples include:
+
+* Reaction timer game
+* Car door remote lock
+* Bop It! style game
+* Spotify controller
+* Christmas ornament
+* Home automation
+* RFID 
+* Rubik's Cube simulator/solver
+* Plant monitor
+* Bluetooth sniffer
+
+If you're looking for other ideas, a good search term for getting ideas is 'maker projects' as well as the list of projects up on [Adafruit Learn](https://learn.adafruit.com/){:target="\_blank"}.
 
 ---
 
