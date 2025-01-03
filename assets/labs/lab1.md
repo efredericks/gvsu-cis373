@@ -38,6 +38,9 @@ Before you leave for the day, (minimally) show me:
 {: .highlight}
 You can use other editors, however not all of them are good/appropriate.  Mu is the suggested one out of the box and provides a lot of nice features for our specific purposes.  Check the link above for a list of recommended editors if you want to try something else!
 
+{: .highlight}
+In theory, it should already be installed on the lab PCs - if you are using those then you just need to make sure it works with your device!
+
 Grab the latest installer for the Mu editor: [https://codewith.mu/](https://codewith.mu/).  If you are installing this on a lab machine you should (in theory) be able to install it to your user account.  If you are using your personal laptop install it a you normally would any other program.
 
 (If you get stuck, here is Adafruit's Getting Started guide: [https://learn.adafruit.com/adafruit-circuit-playground-express/installing-mu-editor](https://learn.adafruit.com/adafruit-circuit-playground-express/installing-mu-editor)).
@@ -47,6 +50,9 @@ After you get it installed, we need to set it up for our device and for the Circ
 **At this point, ensure your Circuit Playground is plugged into your device with the appropriate USB connector.**
 
 **Appropriate means it has a data line!  A normal USB charger will not work!**
+
+{: .highlight}
+At least this semester I'll be skipping Mu personally as I decided to go with Linux-only computers.  Mu is intended to be a "simple" interface for both a code editor and access to the serial console.  Mu doesn't work very nicely with Linux at present, so I will be using VSCode along with a program to monitor the serial connection (most likely `minicom`).  Don't worry about directly replicating my setup (unless if you use Linux as well!).
 
 ## Install CircuitPython and Libraries
 
@@ -69,6 +75,9 @@ And then...
 > [https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuit-playground-bluefruit-circuitpython-libraries](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuit-playground-bluefruit-circuitpython-libraries)
 
 You're going to need the `neopixel.mpy` library from the above library download.  Open up the ZIP file, go into the `lib` directory, and copy `neopixel.mpy` into the `lib` directory on your device.
+
+{: .important }
+Make sure you keep that archive of libraries handy!  You'll be needing it for nearly every lab!
 
 
 ## But first...
@@ -204,6 +213,16 @@ This brings us to the concept of RGB values for color.  Essentially, 0 is black,
 Our Neopixels use a tuple for RGB - `(R, G, B)`.  For instance, setting an LED to `(255, 0, 255)` will make it hot pink (or, the *magic color*).
 
 Try setting a single pixel to a specific color.  Remember, our LEDs are indexed between 0 and 9, and each has a color specified as a 3-tuple.  Don't forget to call `pixels.show()` once you're done!
+
+## Oh so bright!
+
+To avoid burning your eyes out, you can change the brightness.  When you initialize the NeoPixel ring you can set it on a scale between 0.0 and 1.0:
+
+```
+pixels = neopixel.NeoPixel(board.NEOPIXEL, NUM_LEDS, auto_write=False, brightness=0.2)
+```
+
+
 
 ## Garbage collecting
 
