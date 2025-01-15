@@ -27,8 +27,12 @@ For each lab, I will have some minimal things you need to do before you leave fo
 
 Before you leave for the day, (minimally) show me:
 
-1. The Mu editor installed and running your code.
-2. LEDs active on your device.
+1. The MakeCode simulator running the printing/LED example (the first one)
+2. LEDs blinking in a separate project (the second one).
+
+## Reference Guide
+
+If you find yourself looking for a command or clarification on syntax, here is the [reference guide](https://makecode.microbit.org/reference/).
 
 ## Saving and Loading
 
@@ -38,7 +42,7 @@ Note that the editor will save them to your local storage, however that won't pe
 
 ## Install CircuitPython and Libraries
 
-Well, this simulator actually uses block-based programming (or JavaScript) to handle things, and no installation is necessary.  Unfortunately with the quick turnaround needed to do this lab I am not as familiar with how Adafruit set up their JavaScript framework, so we're going to go block-based for now.  
+Well, this simulator actually uses block-based programming (or JavaScript, or Python) to handle things, and no installation is necessary.  Unfortunately with the quick turnaround needed to do this lab I am not as familiar with how Adafruit set up their JavaScript framework, the Python implementation is not a one-to-one comparison, so we're going to go block-based for now.  
 
 If you ever have used Scratch you'll feel right at home.  If not, no worries. 
 
@@ -87,7 +91,7 @@ while not done:
 
 Now, let's do that in the simulator.  We'll add in a notification as well - we can have the lights turn green when done.
 
-First, create a variable in `on start` - `seconds = 0`.  It should look like this.
+First, create a variable in `on start` - `timer = 0`.  It should look like this.
 
 {: .important }
 I had to search for 'true' to find the Boolean variable to move into the variable assignment.  
@@ -96,7 +100,7 @@ I had to search for 'true' to find the Boolean variable to move into the variabl
 
 You might be wondering about that `done` variable.  Since we have the `forever` block we don't need to create our own.  We'll just bail out of the loop once we're ready.
 
-Now, let's increment our variable and delay the program so it doesn't run too fast.  If you've programmed before this might be slightly confusing, but we are essentially going to be doing a `seconds = seconds + 1` type of call.
+Now, let's increment our variable and delay the program so it doesn't run too fast.  If you've programmed before this might be slightly confusing, but we are essentially going to be doing a `timer = timer + 1` type of call.
 
 We also want to have our program sleep slightly so that we aren't overwhelming the device.  Confusingly, the delay is named `pause` (there is a `wait` block as well - but that is waiting for an event, not pausing the program).
 
@@ -110,87 +114,57 @@ Now, if you want to have 'better' output you might want to do string concatenati
 
 <img alt="CircuitPlayground Bluefruit simulator pretty printing" src="/gvsu-cis373/assets/images/lab1-printing-pretty.png" />
 
+Last step, let's update the forever loop so that the program has an end point.  
 
-
-
-
-
-
-
-
-## Make those LEDs blink
-
-For reference, I want you to realize how easy life is with the Neopixel ring on your device.  You are being saved the headache of wiring, powering, and addressing them that one normally would (say, with a *standard* Arduino).  Just nod in satisfaction and move on.
- 
 {: .highlight }
-Alternatively, look up a [Neopixel wiring guide](https://learn.adafruit.com/adafruit-neopixel-uberguide?view=all) if you're wondering.
+Note: I can't find a way to fully break out of the forever loop, so we will just allow it to go forever but will make sure it doesn't "do anything" when it shouldn't.
 
-We need some extra libraries!  We're going to import the `board` and `neopixel` libraries.  `board` and `neopixel` are going to be used for managing those LEDs.  We'll also be using `board` later for handling button presses - essentially it is our access point into the board's connections.
+Let's add a conditional - first we'll check if the `timer` variable is greater than 10, and if so, we'll turn the lights green.  Otherwise, we'll do our usual printing.
 
-First, add in the imports:
+Add an `if` statement to make it look like this:
 
-```
-import board
-import neopixel
-```
+<img alt="CircuitPlayground Bluefruit simulator if" src="/gvsu-cis373/assets/images/lab1-if1.png" />
 
-Now, prior to our forever loop we need to initialize the Neopixel ring.  We're going to access it via a variable (`pixels`), tell its contructor how many LEDs there are (this library supports other arrangemenets as well), set its brightness, and require that we manually tell the LED array to update.  The last option allows us to speed things up by sending a single signal with a batch of changes, rather than one at a time.
+Should work fine, however it still prints forever.  Move the printing statements into an `else` block (you'll need to grab the `if-else` block):
 
-```
-NUM_LEDS = 10
-pixels = neopixel.NeoPixel(board.NEOPIXEL, NUM_LEDS, auto_write=False)
+<img alt="CircuitPlayground Bluefruit simulator if-else" src="/gvsu-cis373/assets/images/lab1-if2.png" />
 
-# set pixels to off initially
-for i in range(NUM_LEDS):
-    pixels[i] = (0, 0, 0)
+Not bad, we now have the concepts of logic, variable setting and printing, and setting LEDs. 
 
-pixels.show()
-```
+{: .important }
+Take a screenshot of your working simulation, including the console output and the LEDs on and save it for your lab report.
 
-This brings us to the concept of RGB values for color.  Essentially, 0 is black, 255 is white, and the values in between are how dark or light you want that particular value.
+## Make those LEDs blink (with randomness)
+
+Now, let's make them blink.  **Create a new project as we'll be starting fresh.**
+
+Skipping the Neopixel (the LEDs) instrumentation for now, this brings us to the concept of RGB values for color.  Essentially, 0 is black, 255 is white, and the values in between are how dark or light you want that particular value.
 
 Our Neopixels use a tuple for RGB - `(R, G, B)`.  For instance, setting an LED to `(255, 0, 255)` will make it hot pink (or, the *magic color*).
 
-Try setting a single pixel to a specific color.  Remember, our LEDs are indexed between 0 and 9, and each has a color specified as a 3-tuple.  Don't forget to call `pixels.show()` once you're done!
+Try setting a single pixel to a specific color.  Remember, our LEDs are indexed between 0 and 9, and each has a color specified as a 3-tuple. The block-based language allows you to directly pick a color or to manually set it:
 
-## Oh so bright!
+<img alt="CircuitPlayground Bluefruit simulator LED" src="/gvsu-cis373/assets/images/lab1-led.png" />
 
-To avoid burning your eyes out, you can change the brightness.  When you initialize the NeoPixel ring you can set it on a scale between 0.0 and 1.0:
+Now, let's have a randomly-selected LED blink a random color every second, ensure we clear out the prior colors.
 
-```
-pixels = neopixel.NeoPixel(board.NEOPIXEL, NUM_LEDS, auto_write=False, brightness=0.2)
-```
+Try to do the following steps - I'll give the final reference but try on your own:
 
+1. Create an additional variable `led_index` to hold our randomly-selected index (keep the `led` variable as we'll use that too).  
 
+2. Add a random number block that is `pick random 0 to 9` and copy and paste it into the `led_index` variable.
 
-## Garbage collecting
+3. Add a random number block that is a `pick random 0 to 255`, copy and paste it into each of the RGB fields in `led`, and drag the initialization into the top of the forever loop.  This will give a new value each iteration rather than only one.
 
-This will be a short little bit.  Let's monitor our memory over time.  First, remove the exit condition in our `while` loop - we want this to run forever (i.e., remove the `if seconds > 10` block).
-
-Then, at the top:
-
-```
-import gc
-```
-
-And in the body of our loop:
-
-```
-print("Hello world - {0} seconds.  We have {1} bytes available for use.".format(seconds, gc.mem_free()))
-```
-
-You may notice that ... available memory goes down over time (let it run for a while).  Our setup isn't automatically garbage collecting.
-
-Now, at the bottom of the loop add:
-
-```
-gc.collect()
-```
-
-And if everything is working as intended, our free memory shouldn't really change all that much over time.  **You'll most likely want to garbage collect from here on out!**
+What you should see is a randomly-selected LED show a randomly selected color, where the colors are cleared out each loop to "refresh" the LED ring.
 
 {: .note }
-Here is some additional information on memory management: [https://learn.adafruit.com/Memory-saving-tips-for-CircuitPython/ram-saving-tips](https://learn.adafruit.com/Memory-saving-tips-for-CircuitPython/ram-saving-tips)
+The random number block is inclusive, so doing random between 0 and 9 will yield a value on [0, 9].
+
+Here is the [hint](/gvsu-cis373/assets/images/lab1-led-colors.png).
+
+{: .important }
+Take a screenshot of your working simulation, including the console output and the LEDs on and save it for your lab report.
 
 ## Handle button presses
 
