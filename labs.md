@@ -10,6 +10,7 @@ description: >-
 {:.no_toc}
 
 1. [Lab 1 - Getting Started with CircuitPlayground Bluefruit](/assets/labs/lab1.md)
+    * [Lab 1.1 - Getting Started with the CircuitPlayground Bluefruit *Simulator*](/assets/labs/lab1-sim.md)
 2. Lab 2 - Rainbows and Capacitive Touch
 3. Lab 3 - Synthesizers with Friends
 4. Lab 4 - Sensors
