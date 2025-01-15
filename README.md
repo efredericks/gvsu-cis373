@@ -23,8 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* HW1 - January 17
-* HW1 Signoff - January 10
+* HW1 - January 24
+* HW1 Signoff - January 17
 
 ## Course Description
 
