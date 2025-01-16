@@ -7,7 +7,7 @@ title: Slides and Readings for CIS373 - Pervasive Computing
   : (Read prior to class) [The Computer for the 21st Century - Weiser](/gvsu-cis373/assets/weiser-1991-ubiquitous.pdf)
 
 2
-: System Architectures
+: [System Architectures](/gvsu-cis373/assets/slides/CIS373-2-System-Architectures.pdf)
 
 3
 : Wireless Sensor Networks (1)
