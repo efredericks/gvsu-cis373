@@ -168,79 +168,35 @@ Take a screenshot of your working simulation, including the console output and t
 
 ## Handle button presses
 
-We've done a lot in this introductory material, but the goal is to get you up and running as soon as possible.  The last piece for this module is to handle button presses.  The Bluefruit has two buttons built into the board - `A` and `B`.  Per usual, we need a library to handle things:
+We've done a lot in this introductory material, but the goal is to get you up and running as soon as possible.  The last piece for this module is to handle button presses.  The Bluefruit has two buttons built into the board - `A` and `B`.  
 
-```
-import digitalio
-```
-
-We're also going to define variables to initialize the buttons in-code.  This will involve adding a reference and setting if it is [pull-up or pull-down](https://www.circuitbasics.com/pull-up-and-pull-down-resistors/).  More than likely, we'll get into debouncing another time (or, how often the button "fires" while you're pressing it).
-
-Add this above your forever loop (we only want to set it once):
-
-```
-btnA = digitalio.DigitalInOut(board.BUTTON_A)
-btnA.switch_to_input(pull=digitalio.Pull.DOWN)
-
-btnB = digitalio.DigitalInOut(board.BUTTON_B)
-btnB.switch_to_input(pull=digitalio.Pull.DOWN)
-```
-
-Things to note - our variables for the buttons are `btnA` and `btnB`.  My preference is to preface variables with the hardware they represent, but this is up to you as long as it is readable (to me).
-
-We're also setting them to be pull-down - you'll have to look this up separately as to why.
+Normally we'd need to specify if an input is pull down or pull up, but we'll save that for the real hardware (you do have a homework question on it though...).  [Pull-up or pull-down](https://www.circuitbasics.com/pull-up-and-pull-down-resistors/).  
 
 {: .note }
-We're using the built-in buttons here.  You can wire/clip a button to any of the open ports you see ringing your device for additional inputs!  In a future lab we may even use some *non-traditional* methods of input.
+We're using the built-in buttons here (button A and button B).  You can wire/clip a button to any of the open ports you see ringing your device for additional inputs!  In a future lab we may even use some *non-traditional* methods of input.
 
-Now, let's check for button presses!  Put this in your forever loop:
+Make your project look like this (creating a new project):
 
-```
-if btnA.value:
-    print("Button A pressed!")
+<img alt="CircuitPlayground Bluefruit simulator buttons" src="/gvsu-cis373/assets/images/lab1-buttons.png" />
 
-if btnB.value:
-    print("Button B pressed!")
-```
+Notice the difference when you click each button in the simulator!  What do you notice?
 
-You should note that, while yes it does work - there are some oddities.  However, we're handling the buttons!  Note that there is a `value` attribute on the button element - there are others that I'll leave as an exercise to the student to research.
-
-The one second delay at the end of the loop must be dreadfully annoying though.  Change the delay at the end of the loop to:
-
-```
-sleep(0.01)
-```
-
-You can also comment out the `print` statement as well since we don't need it anymore.
-
-Now your button presses should be a bit nicer.  If you want to understand what I mean by *nicer* try the next section with the delay of one second.  
+{: .note }
+The block that is `on button A click` is a callback and will run whatever is within the block when the button is pressed.  The other block (`if button B is pressed`) runs within the `forever` loop and is checked every time, regardless.
 
 ## Putting it together - Color Cycler
 
-At this point let's do a little cleanup.  I'm going to give you the *general* structure of what your code should look like, but not the "full" code:
-
-```
-- comment block
-
-- imports
-
-- variable initializations
-
-- LED initializations
-
-forever loop:
-  - print some information
-  - delay 
-  - garbage collect
-```
+At this point let's do a little cleanup.  Time for a new project and for the one you'll be submitting!  Name it `yourlastname-CIS373-HW1.1`
 
 ### What our goals are:
 
-Let's plan this out a bit - we want to (1) define an array of colors, (2) set one of our buttons to cycle through the colors, (3) set the other button to turn the lights on and off, and (4) set *both* buttons to end the program.
+Let's plan this out a bit - we want to (1) define an array of colors, (2) set one of our buttons to cycle through the colors, and (3) set the other button to turn the lights on and off.
+
+Note: I'll give you pseudo-code for most of this, and you have to translate it into blocks.
 
 ### (1) Define an array of colors
 
-There most likely is a CircuitPython library that I'm not aware of (please feel free to let me know if you find one) that defines colors, so we're going to manually define a set of colors as well as our colors array.  We also need a "current index" to track which color to show.
+Let's define an array of colors and its current index.
 
 First up, define the available colors - remember we have the range of [0, 255] for each color component.  Feel free to add additional colors as well.
 
@@ -268,6 +224,13 @@ And our array (note we're leaving off `BLACK` as we'll use that as our clear col
 colors = [RED, GREEN, BLUE, WHITE, PINK]
 ```
 
+For us, the array will look like this (search for `array` to find the correct block).
+
+<img alt="CircuitPlayground Bluefruit simulator array" src="/gvsu-cis373/assets/images/lab1-array.png" />
+
+{: .note }
+The simulator has pre-defined colors that we can use as well, like you see above.  Up to you if you want to use the RGB or the pre-defined ones.
+
 Now, any time you want to set your colors you can use human-readable values.  For example, LED0 can be set to hot pink by writing `pixels[0] = PINK` or `pixels[0] = colors[4]`
 
 ### (2) Set one button (`button A`) to cycle through colors
@@ -280,59 +243,26 @@ Inside your `if btnA.value` conditional:
 # Cycle through colors
 if btnA.value:
     color_index += 1
-    if color_index > len(colors)-1: 
+    if color_index > len(colors): 
         color_index = 0
 ```
 
 By defining our check in this fashion, we could make our `colors` array as large as possible without needing to rewrite this code.  So now, we naturally need to do *something* with `color_index`, right?
 
+For reference, the `length of array` block gives you the equivalent of `len`.  It should look like this:
+
+<img alt="CircuitPlayground Bluefruit simulator len" src="/gvsu-cis373/assets/images/lab1-array-index.png" />
+
+
 ---
 
 For ease of use, we're going to set the LED colors every loop cycle.  A better way would be to turn this into a function and only set them when we do some event, but we'll save that for a future assignment.
 
-For now, in the main body of the loop (right above the call to `sleep(0.01)`):
-
-```
-# Set our LED colors and display them
-for i in range(NUM_LEDS):
-    pixels[i] = colors[color_index]
-pixels.show()
-```
+For now, in the forever loop, we want to set all pixels to `colors[color_index]`.
 
 You should see your LED ring start out as RED and cycle through each color every time you press `button A`.
 
-HOWEVER, it is probably going *ridiculously* fast.  Let's add a *short* delay to our button presses (i.e., a naive debouncing).
-
-#### ADDING A DELAY
-
-This is an interesting conundrum.  We have our `sleep(0.01)` call at the bottom of our loop to slow things down.  However it is still too fast for our buttons.  One thing we can do is to add a short delay on our button presses (something you might see often in, say, video games, to reduce the amount of times something happens when pressing a button).
-
-First of all, define a variable at the top to handle our delay:
-
-```
-btn_timer = 0  # press rate
-```
-
-And then, update your conditional:
-
-```
-# Cycle through colors
-if btnA.value and btn_timer == 0:
-    btn_timer = 15  # cooldown rate
-
-    color_index += 1
-    if color_index > len(colors)-1: 
-        color_index = 0
-
-# Handle button cooldown 
-if btn_timer > 0:
-    btn_timer -= 1
-```
-
-{: .note }
-It would be smarter to define `15` as a global variable since we'll be using it in multiple places - this avoids the possibility of mistakes with timers.
-
-Ok, now we have a short timer that basically "locks" the button until we want it to fire again.  This is a "feel" thing - if it is too fast make that value larger - if too slow make it smaller!  We'll do the same for `button B` as well in the next section.
+The equivalent blocks call is `set all pixels to`, and accessing the exact index is `colors get value at color_index`.
 
 ### (3) Set one button (button B) to turn lights on and off
 
@@ -348,130 +278,33 @@ And modify the button B press code:
 
 ```
 # Toggle light state
-if btnB.value and btn_timer == 0:
-    lights_on = not lights_on
-    btn_timer = 15
+lights_on = not lights_on
 ```
+
+This one is mildly tricky, so:
+
+<img alt="CircuitPlayground Bluefruit simulator not" src="/gvsu-cis373/assets/images/lab1-not.png" />
+
+
 
 And then modify the light showing code:
 
 ```
 # Set our LED colors and display them, if enabled
-for i in range(NUM_LEDS):
-    if lights_on:
-        pixels[i] = colors[color_index]
-    else:
-        pixels[i] = BLACK
-pixels.show()
+if lights_on:
+    set all pixels to colors[color_index]
+else:
+    set all pixels to BLACK
 ```
 
 What is happening here is that we're setting our values, and if the B button has been pressed we're setting the color to `BLACK` (or (0, 0, 0)), which is off for LEDs.
 
-### (4) Set both buttons (buttons A and B) to end the program
-
-Oddly enough, this is the easiest bit of code.  However, we need to put it in a special place, otherwise we'll see odd behavior.
-
-Right before you check the button values, add the following conditionals and move your pre-existing button presses into the `else` block:
-
-```
-if btnA.value and btnB.value: # Both buttons pressed - exit
-    done = True
-else: # Handle button presses as normal
-    if btnA.value and btn_timer == 0:  #...
-```
-
-Now **why** did we have to do the exit check first?  We don't want the pre-existing code for `btnA` and `btnB` to run as well as our exit code.  
-
-
 ## How do we submit the files?
 
-You're going to need to submit your Python script to Blackboard as well as a lab manual.  I'm going to test your program by running it on my device that is identical to yours - meaning if it doesn't work on mine, then it definitely doesn't work on yours.  
+You're going to need to submit your saved project image to Blackboard as well as a lab manual.  I'm going to test your program by running it in my browser.  
 
 If you are struggling please reach out!
 
 ## Homework
 
 See Blackboard for the homework questions.  You have to turn your code in as well!
-
-
-## Addendum
-
-Note: I am **not** going to do this for most labs, however for the purposes of getting you up and running here is a minimum working example (if you simply copy and paste this things should work - however you aren't going to get full points for it):
-
-```
-"""
-Author: Erik Fredericks
-Date: 01/01/2024
-Title: Homework 1
-Description: This program prints timing data to the serial port, randomly blinks LEDs, and turns the LEDs on and off with button presses.
-"""
-
-from time import sleep
-import board
-import neopixel
-import gc
-import digitalio
-
-### board initialization
-
-# initialize neopixels
-NUM_LEDS = 10
-pixels = neopixel.NeoPixel(board.NEOPIXEL, NUM_LEDS, auto_write=False)
-
-# available colors
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-WHITE = (255, 255, 255)
-PINK = (255, 0, 255)
-BLACK = (0, 0, 0)
-
-color_index = 0
-colors = [RED, GREEN, BLUE, WHITE, PINK]
-
-# flags/timeres
-lights_on = True    # flag to enable/disable lights
-btn_timer = 0       # press rate
-
-
-# set pixels to off initially
-for i in range(NUM_LEDS):
-    pixels[i] = BLACK
-pixels.show()
-
-# setup buttons
-btnA = digitalio.DigitalInOut(board.BUTTON_A)
-btnA.switch_to_input(pull=digitalio.Pull.DOWN)
-
-btnB = digitalio.DigitalInOut(board.BUTTON_B)
-btnB.switch_to_input(pull=digitalio.Pull.DOWN)
-
-### forever loop
-done = False
-while not done:
-    if btnA.value and btnB.value: # Both buttons pressed - exit
-        print("Should handle exit condition here")
-    else:
-        # Cycle through colors
-        if btnA.value and btn_timer == 0:
-            print("Should handle button A press here")
-            btn_timer = 15
-
-        # Toggle light state
-        if btnB.value and btn_timer == 0:
-            print("Should handle button B press here")
-            btn_timer = 15
-
-    # Handle button cooldown
-    if btn_timer > 0: btn_timer -= 1
-
-    # Set our LED colors and display them, if enabled
-    for i in range(NUM_LEDS):
-        pass # Should handle LED display here - i.e., setting pixels array
-    pixels.show()
-
-    sleep(.01)
-    gc.collect()
-
-print("Program done - exiting.")
-```
