@@ -16,9 +16,11 @@ description: >-
 
 # Lab 2.1 - Simulated Rainbows and Capacitive Touch and Shakes!
 
-We're still waiting on that whole *supply chain* to rectify itself, so once again to the Makecode simulator we go.  Today we're going to make more light shows, but this time with capacitive touch, sliders, and shakes.
+We're still waiting on that whole *supply chain* to rectify itself, so once again to the Makecode simulator we go.  Today we're going to make more light shows, but this time with capacitive touch, multiple buttons, and shakes.
 
 The eventual Python lab will use `rainbowio` for a library, but we'll come back to that.
+
+For reference, here are the details of the [Adafruit CircuitPython NeoPixel](https://learn.adafruit.com/adafruit-circuit-playground-express/circuitpython-neopixel).  It is super nifty and makes programming LEDs ridiculously easy.
 
 ## Lab Signoff
 
@@ -26,8 +28,8 @@ The eventual Python lab will use `rainbowio` for a library, but we'll come back 
 
 Before you leave for the day, (minimally) show me:
 
-1. Capacitive touch working (i.e., your contacts on the side demonstrate some response to touch)
-2. Rainbows happening on the LEDs when you press a button
+1. `button A` playing a rainbow and `button B` clearing the LEDs.
+2. The LED array turning red when you shake the device.
 
 ## First - new project (and back up your old projects)
 
@@ -37,16 +39,74 @@ Don't forget to backup your old Lab 1 images somewhere safe!  Start a new projec
 
 This is pretty easy and we don't need to worry about any external libraries or anything like that.
 
+We're going to setup some basic behaviors so that we know when things are "working" -- basically when we're debugging boards like this it'll be a lot easier to see LEDs doing things than it is to hook up a debugger and look at the console.
 
+(We'll be checking the console as well).
 
+First, let's consider "ON" to be a built-in LED animation and "OFF" to have all the LEDs set to black (remember, (0,0,0) in RGB).
 
+{: .note }
+On our devices and most Neopixels, setting the LEDs to black will actually just turn them off.
 
+Let's go back to our first lab and setup an event.  Add a callback handler for `button A` and `button B`, respectively.
+
+In `button A` have it play a rainbow animation for `500ms`, and in `button B` set all LEDs to black.
+
+Here's the [hint](/gvsu-cis373/assets/images/lab21-setup.png) if you need help.
+
+{: .note }
+There are some other fun animation styles if you click the drop down.  You can also define your own with some programming and timing!
+
+Back up and running, nice work.  Let's explore some other input options.
+
+## Interim Variable
+
+We're now going to insert a flag variable that is going to handle what is displayed in the `forever` loop.  Essentially, we're going to have our different inputs make different colors appear.
+
+{: .note }
+Leave the `button A` and `button B` callbacks as is, for now.
+
+Define a new variable called `button_state` and leave it as an `int`.  Typically for what I'm going to have you do we'd define an `enum`, however that would entail defining an array for blocks and that is going to be more annoying than it is worth.
+
+{: .important }
+Enums serve as a nice protection against accidental variable settings, however.  Plus, they protect against changing variable states.  
+
+We're going to have `button_state` serve as the following (in pseudo-code):
+
+```
+0 = OFF
+1 = RED
+2 = GREEN
+3 = PINK
+4 = PURPLE
+```
+
+So, when it is set to 0, the LEDs should be off (unless if you pressed `button A`, naturally).
+
+Here's the [hint](/gvsu-cis373/assets/images/lab21-setup-2.png).
+
+Couple of notes - we're going to be using callbacks to influence `button_state`, so all our "main" logic for what it is doing will be separate.  Unless if we're changing things up we probably won't touch the `forever` loop much after this!
+
+Additionally, you can quickly test out if your logic works by setting `button_state` to the different values within `setup`.
+
+{: important }
+What happens if you set `button_state` to 5 in setup?  Is this a good or bad thing?
 
 ## Shakey Shakey
 
-Try to make it look like this:
+First, we'll take advantage of the accelerometer on the device.  Note that this behavior most likely relies on a library that is checking to see if the measured acceleration values quickly change so that you know it is "shaking."
 
-<img alt="CircuitPlayground Bluefruit simulator shake" src="/gvsu-cis373/assets/images/lab21-shake.png" />
+If we were doing this in Python you'd either need to use that library or manually sample the sensor and track it over a second or so.
+
+Now, search for "shake" in the list (it'll be an `on shake` block).  If you click the drop down you can see all the different options you have for this block (i.e., if you don't want a pure "shake" behavior).
+
+Within that block, set `button_state` to 1.  So, when we shake it (the option should become available in the simulator after you add that block) the colors should turn red (and stay red because we don't ever change it).
+
+Try to make it look like [this](/gvsu-cis373/assets/images/lab21-shake.png).
+
+## An interlude!
+
+Add a block within the `button B` callback to set `button_state` to 0, since we never change that.  This gives us the ability to "reset" our program state without turning the device off.
 
 ## And also, more buttons!
 
@@ -61,225 +121,18 @@ Not easy to do with a mouse cursor...so the simulator devs put in an A+B button 
 
 <img alt="CircuitPlayground Bluefruit simulator A+B" src="/gvsu-cis373/assets/images/lab21-ab.png" />
 
-We can add in a callback to update our flag as well:
+Add another normal button callback like you did in the beginning, except this time set it to `A+B`.  Inside that function set `button_state` to be 2.  
 
-<img alt="CircuitPlayground Bluefruit simulator A+B" src="/gvsu-cis373/assets/images/lab21-ab-ex.png" />
+## Capacitive-ish touch
 
+We'll, *ahem*, touch on this when we have our board fully working.  Similar to the switch I can't find a way to get a proper "touch" event to fire in the simulator.
 
+HOWEVER, something interesting happens.  Add another button callback, however this time set it for `button A1`.  In that event, set `button_state` to be 3.
 
-## MORE COLORS
-
-It is good to understand how RGB color works, though it is also good to leverage libraries that take care of all the low-level efforts needed (though, don't import things unless if you absolutely need them - again, memory constraints)!
-
-Let's go ahead and add in some light shows to demonstrate why programmable LEDs are just the niftiest thing in the world.
-
-### Get setup (again)
-
-New `code.py` file!  At the top, import the following libraries:
-
-```
-from time import sleep
-import board
-import neopixel
-import gc
-import digitalio
-```
-
-We also need to setup our Neopixels and buttons in the same way.  Note - the named colors is slightly tweaked to be closer to the Adafruit example that we'll be using.
-
-```
-# initialize neopixels
-NUM_LEDS = 10
-pixels = neopixel.NeoPixel(board.NEOPIXEL, NUM_LEDS, brightness=0.01,auto_write=False)
-
-# named colors
-RED = (255, 0, 0)
-YELLOW = (255, 150, 0)
-GREEN = (0, 255, 0)
-CYAN = (0, 255, 255)
-BLUE = (0, 0, 255)
-PURPLE = (180, 0, 255)
-WHITE = (255, 255, 255)
-OFF = (0, 0, 0)
-
-# set pixels to off initially
-for i in range(NUM_LEDS):
-    pixels[i] = OFF
-pixels.show()
-
-# setup buttons
-btnA = digitalio.DigitalInOut(board.BUTTON_A)
-btnA.switch_to_input(pull=digitalio.Pull.DOWN)
-
-btnB = digitalio.DigitalInOut(board.BUTTON_B)
-btnB.switch_to_input(pull=digitalio.Pull.DOWN)
-BTN_TIMER_DELAY = 15
-btn_timer = 0
-
-done = False
-while not done:
-    if btnA.value and btnB.value: # Both buttons pressed - exit
-        done = True
-    else:
-        if btnA.value and btn_timer == 0:
-            btn_timer = BTN_TIMER_DELAY
-
-        if btnB.value and btn_timer == 0:
-            btn_timer = BTN_TIMER_DELAY
-
-    # Handle button cooldown
-    if btn_timer > 0: btn_timer -= 1
-
-    sleep(.01)
-    gc.collect()
-
-print("Program done - exiting.")
-```
-
-### Import the `rainbowio` library
-
-Fortunately, this library should already be installed when you got CircuitPython setup.  
-
-To your list of imports add:
-
-```
-from rainbowio import colorwheel
-```
-
-We're going to be using code from Adafruit on this one, as they have a pretty interesting set of functions for doing things with LEDs.
-
-This is the link in question: [Adafruit CircuitPython NeoPixel](https://learn.adafruit.com/adafruit-circuit-playground-express/circuitpython-neopixel)
+Here's some [info on capacitive touch](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuitpython-cap-touch) - it will prove quite interesting once we get into our synthesizer lab!
 
 {: .note }
-You are more than welcome to define your own functions as well!  Be creative!
-
-This very well may be the first functions we use in class!  These ideally are placed above where they are first executed - typically I put them below the import statements.
-
-**Code from Adafruit:**
-```
-def color_chase(color, wait):
-    for i in range(10):
-        pixels[i] = color
-        sleep(wait)
-        pixels.show()
-    sleep(0.5)
-
-
-def rainbow_cycle(wait):
-    for j in range(255):
-        for i in range(10):
-            rc_index = (i * 256 // 10) + j * 5
-            pixels[i] = colorwheel(rc_index & 255)
-        pixels.show()
-        sleep(wait)
-
-
-def rainbow(wait):
-    for j in range(255):
-        for i in range(len(pixels)):
-            idx = int(i + j)
-            pixels[i] = colorwheel(idx & 255)
-        pixels.show()
-        sleep(wait)
-```
-
-{: .highlight }
-> But hold on - what is the `colorwheel` function?  If we look it up directly in the library API it just says this is an implementation of the C `colorwheel` function - not helpful.
-> 
-> However, there's a nice writeup on [this website](https://learn.adafruit.com/todbot-circuitpython-tricks/neopixels-dotstars):
->
-> > The `colorwheel()` function takes a single value 0-255 hue and returns an (R,G,B) tuple given a single 0-255 hue. It's not a full `HSV_to_RGB()` function but often all you need is "hue to RGB", where you assume `saturation=255` and `value=255`. It can be used with neopixel, adafruit_dotstar, or any place you need a (R,G,B) 3-byte tuple.
-> 
-> Essentially, we're getting an RGB tuple from the "position" on a [color wheel](https://www.canva.com/colors/color-wheel/).
-
-Each of these functions has a `wait` parameter - this is how long in-between changes.  Essentially, you call one of the functions and it runs for the entire cycle.  You can try it by calling one prior to our forever loop.
-
-For example:
-
-```
-rainbow(0.01)
-
-done = False
-while not done: 
-   ...
-
-```
-
-Try the other functions as well!  In the next section we'll use our buttons to handle the show.
-
-### Start the show on a button press
-
-We have two buttons, let's use button A to start the `rainbow` show and button B to start the `rainbow_cycle` show.
-
-Inside our button handlers (don't remove setting the `btn_timer` value!):
-
-```
-if btnA.value and btn_timer == 0:
-    rainbow(0.01)
-
-if btnB.value and btn_timer == 0:
-    rainbow_cycle(0.01)
-```
-
-At the bottom of our loop (above the call to `sleep`) add the following so that the colors are shut off once the cycle is complete:
-
-```
-# Set our LED colors and display them, if enabled
-for i in range(NUM_LEDS):
-    pixels[i] = OFF 
-pixels.show()
-```
-
-At this point, you should have two color shows happening on a button press and once complete the device should go dark.
-
-{: .note }
-Try playing with the timings!  And try out `color_chase` as well!
-
-## Capacitive Touch
-
-> Here is the [Adafruit reference for this section](https://learn.adafruit.com/adafruit-circuit-playground-express/adafruit2-circuitpython-cap-touch)
-
-Now it is time to talk about those golden/brassy rings around the side.  Those are pins that can be used for input and output (or, why we have the alligator clips).
-
-Interestingly, they also support something called [**capacitive touch**](https://www.allaboutcircuits.com/technical-articles/introduction-to-capacitive-touch-sensing/).
-Essentially, these ports will allow you to make a connection simply by using your finger (or some other object which will transmit the signal, say, a banana).
-
-Without delving into the details, this means we have an additional *seven* options for providing input to our device.
-
-Here are the locations on the board - note the labels:
-
-![Capacitive touch](https://cdn-learn.adafruit.com/assets/assets/000/054/810/large1024/circuitpython_cpx_capacitive_touch_pads.jpg)
-
-Neat, but how do we use them?  We'll need a library to handle the touching parts:
-
-```
-import touchio
-```
-
-Then, below where your buttons are *defined*, add the following so that we have access to all of our capacitive inputs:
-
-```
-# capacitive touch
-touch_A1 = touchio.TouchIn(board.A1)
-touch_A2 = touchio.TouchIn(board.A2)
-touch_A3 = touchio.TouchIn(board.A3)
-touch_A4 = touchio.TouchIn(board.A4)
-touch_A5 = touchio.TouchIn(board.A5)
-touch_A6 = touchio.TouchIn(board.A6)
-touch_TX = touchio.TouchIn(board.TX)
-```
-
-You can use it the same way you would with buttons (including delay if you wish):
-
-```
-if touch_A1.value:
-    print("A1 was touched!")
-```
-
-{: .note }
-If you really wanted to, you could connect one of your alligator clips to `A1` to see if that works...
-
----
+Pick another of the inputs and have `button_state` be set to 4 to finish up our color picker.
 
 ## Let's bring it all together.
 
