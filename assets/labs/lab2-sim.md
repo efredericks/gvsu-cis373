@@ -35,7 +35,7 @@ Before you leave for the day, (minimally) show me:
 
 Don't forget to backup your old Lab 1 images somewhere safe!  Start a new project for this lab.
 
-## And Now, a Rainbow
+## And now, a rainbow
 
 This is pretty easy and we don't need to worry about any external libraries or anything like that.
 
@@ -59,7 +59,7 @@ There are some other fun animation styles if you click the drop down.  You can a
 
 Back up and running, nice work.  Let's explore some other input options.
 
-## Interim Variable
+## Interim variable
 
 We're now going to insert a flag variable that is going to handle what is displayed in the `forever` loop.  Essentially, we're going to have our different inputs make different colors appear.
 
@@ -92,7 +92,7 @@ Additionally, you can quickly test out if your logic works by setting `button_st
 {: important }
 What happens if you set `button_state` to 5 in setup?  Is this a good or bad thing?
 
-## Shakey Shakey
+## Shakey shakey
 
 First, we'll take advantage of the accelerometer on the device.  Note that this behavior most likely relies on a library that is checking to see if the measured acceleration values quickly change so that you know it is "shaking."
 
@@ -134,75 +134,23 @@ Here's some [info on capacitive touch](https://learn.adafruit.com/adafruit-circu
 {: .note }
 Pick another of the inputs and have `button_state` be set to 4 to finish up our color picker.
 
-## Let's bring it all together.
+## You might notice...
 
-Currently, your buttons are kicking off LED lightshows.  Leave them to do that for now.
+If you happen to see your `button B` or `button A+B` callbacks acting wonky, that is wholly a simulator thing.  It seems to forget at times which callbacks to use.  You can try moving them to external buttons (the A0-A7) to get the functionality back.  You'll be doing that anyway in the next section, just something I noticed.
 
+The interesting thing is if you download this code to your device it will work just fine (aside from the needing to wire up external buttons part).
 
-In your forever loop:
+## For your homework:
 
-1. Set the lights to a color of your choosing (perhaps, create a variable to store the `current_color` and set each of the `pixels` to that color at the end of the loop).
+Based on these inputs, do the following:
 
-2. Have one side of your touch inputs lower the brightness and the other side increase the brightness.
-    - Recall that changing the brightness can be done in-line: `pixels.brightness = value`, where `value` is within `[0.0, 1.0]` 
-    - One thing that might be helpful is to create a global variable that sets the speed of your incrementing/decrementing of the brightness
-        - For instance, `increment_value = 0.01` and `pixels.brightness += increment_value`
-    - Double-recall that you should check to make sure that `value` is never less than `0.0` and is never greater than `1.0`
+1. `button A` should play either the `rainbow` or `comet` animation, depending on a variable setting.
+2. `button A0` should set the LEDs to OFF.
+3. `button A1` should set the LEDs to RED.
+4. `button A2` should set the LEDs to GREEN.
+5. `button A3` should set the LEDs to PINK.
+6. `button A4` should set the LEDs to PURPLE.
+7. `button A7` should toggle the animation state played when `button A` is pressed.
+8. A `shake` event should set the LEDs to OFF.
 
-
-# A journey of self-discovery
-
-One thing that you might be wondering is how to *write data to file* as you have in other programming sessions.  For instance, these are our eventual IoT devices ... we want to log data, correct?
-
-Embedded devices are tricky at times and the Bluefruit is no exception.  It is *possible*, however not very *practical* for us.
-
-[This link](https://learn.adafruit.com/circuitpython-essentials/circuitpython-storage) talks about how to setup file writing, but in essence what is going to happen is that:
-
-1. You will need a special file to run at startup
-2. You're not going to be able to live-edit your code and see changes - you'll have to pull power and do a hard reset (as the special file will only run once).
-3. There's not a lot of space on the device anyway - there's probably a better way to handle data logging.
-
-Nothing to formally **do** in this section, but I want you to understand the limitations of embedded devices.  Part of your homework will be reflecting on this topic.
-
-
-## Homework Extensions
-
-What you *should* have by the time you're done with the lab is:
-
-* The LEDs showing a color of your choice
-* Buttons A and B starting different rainbow light shows
-* Touch inputs on one side lower the brightness and raising the brightness on the other side
-
----
-
-Based on the examples, there are a few options we could sort through.  Wouldn't it be neat if it were user-selectable?  We have 3 rainbow functions.  
-
-> We're going to use LEDs 0-4 for the homework updates (3 and 4 will be `OFF`), and LEDs 5-9 for our previous brightness changer.
-
-> So, at the end of each loop, set pixels 0-4 to `OFF`, and pixels 5-9 to your `current_color`.  
-
-Add a counter to track the 'currently selected' function.  `rainbow` should be 0, `rainbow_cycle` should be 1, and `color_chase` should be 2.
-
-While the Circuit Playground is not doing anything, the corresponding LED should be lit up with a color of your choosing.  For example, if `rainbow_cycle` is selected, then `pixels[1]` should be the only LED on.
-
-> There should only be 1 LED lit at a time in the 0-4 range and all LEDs lit in the 5-9 range, with the specified brightness based on your touch inputs, like this:
-
-<div align="center">
-  <img src="/gvsu-cis373/assets/images/snip.png" />
-</div>
-
-Change your button presses to do the following:
-
-  - When `button A` is pressed, the counter should be incremented to "cycle" through the available options.  Ensure that you do not go over the number of available options (e.g., the fourth LED should not be on)!
-
-  - When `button B` is pressed, execute the current color function.
-
-  - When both buttons are pressed, exit (as usual).
-
-## References
-
-* [Adafruit - Capacitive Touch (using `adafruit_circuitplayground` module)](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express/capacitive-touch)
-* [(Preferred) Adafruit - Capacitive Touch (using `board` module)](https://learn.adafruit.com/adafruit-circuit-playground-express/adafruit2-circuitpython-cap-touch)
-* [Introduction to Capacitive Touch Sensing](https://www.allaboutcircuits.com/technical-articles/introduction-to-capacitive-touch-sensing/)
-* [`rainbowio` Module](https://docs.circuitpython.org/en/8.2.x/shared-bindings/rainbowio/index.html)
-* [`rainbowio` Examples](https://learn.adafruit.com/adafruit-circuit-playground-express/circuitpython-neopixel)
+For each event, write an appropriate message to the console.
