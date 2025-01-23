@@ -16,7 +16,7 @@ description: >-
 
 # Lab 2.1 - Simulated Rainbows and Capacitive Touch and Shakes!
 
-We're still waiting on that whole *supply chain* to rectify itself, so once again to the Makecode simulator we go.  Today we're going to make more light shows, but this time with capacitive touch, multiple buttons, and shakes.
+We're still waiting on that whole *supply chain* to rectify itself, so once again to the [Makecode simulator](https://maker.makecode.com/){:target="_blank"} we go.  Today we're going to make more light shows, but this time with capacitive touch, multiple buttons, and shakes.
 
 The eventual Python lab will use `rainbowio` for a library, but we'll come back to that.
 
@@ -46,9 +46,9 @@ We're going to setup some basic behaviors so that we know when things are "worki
 First, let's consider "ON" to be a built-in LED animation and "OFF" to have all the LEDs set to black (remember, (0,0,0) in RGB).
 
 {: .note }
-On our devices and most Neopixels, setting the LEDs to black will actually just turn them off.
+On our devices and most NeoPixels, setting the LEDs to black will actually just turn them off.
 
-Let's go back to our first lab and setup an event.  Add a callback handler for `button A` and `button B`, respectively.
+Let's go back what we learned in our first lab and setup an event.  Add a callback handler for `button A` and `button B`, respectively.
 
 In `button A` have it play a rainbow animation for `500ms`, and in `button B` set all LEDs to black.
 
@@ -61,7 +61,7 @@ Back up and running, nice work.  Let's explore some other input options.
 
 ## Interim variable
 
-We're now going to insert a flag variable that is going to handle what is displayed in the `forever` loop.  Essentially, we're going to have our different inputs make different colors appear.
+We're now going to insert a variable that is going to handle the state of what is displayed in the `forever` loop.  Essentially, we're going to have our different inputs make different colors appear.
 
 {: .note }
 Leave the `button A` and `button B` callbacks as is, for now.
@@ -137,6 +137,8 @@ Pick another of the inputs and have `button_state` be set to 4 to finish up our 
 ## You might notice...
 
 If you happen to see your `button B` or `button A+B` callbacks acting wonky, that is wholly a simulator thing.  It seems to forget at times which callbacks to use.  You can try moving them to external buttons (the A0-A7) to get the functionality back.  You'll be doing that anyway in the next section, just something I noticed.
+
+Also, you only seem to be able to do a maximum of 6 capacitive touch inputs.
 
 The interesting thing is if you download this code to your device it will work just fine (aside from the needing to wire up external buttons part).
 
