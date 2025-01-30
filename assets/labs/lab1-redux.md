@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 1 Redux
+title: Lab 3 (Lab 1 Redux)
 nav_exclude: True
 description: >-
-    Lab 1 Redux page.
+    Lab 3 (Lab 1) Redux page.
 ---
 
 ## Table of contents
@@ -14,7 +14,7 @@ description: >-
 
 ---
 
-# Lab 1 - Getting Started (Again)
+# Lab 3 (Lab 1) - Getting Started (Again)
 
 Supply chain resolved! We're going to go back to Lab 1 and actually do it in real hardware.
 
