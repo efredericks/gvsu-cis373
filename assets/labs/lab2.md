@@ -121,6 +121,9 @@ You are more than welcome to define your own functions as well!  Be creative!
 
 This very well may be the first functions we use in class!  These ideally are placed above where they are first executed - typically I put them below the import statements.
 
+{: .warning }
+I don't know if this is a "recent" thing from CircuitPython, however you need to define your functions before you use them (similar to C).  You can put your function definitions at the top, under your import statements.  (Normal Python doesn't typically care where you put your functions).
+
 **Code from Adafruit:**
 ```
 def color_chase(color, wait):
