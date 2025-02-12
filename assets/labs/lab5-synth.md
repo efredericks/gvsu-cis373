@@ -35,7 +35,7 @@ Before you leave for the day, (minimally) show me:
 
 ## A Brief Word
 
-This lab session is intended to take up the entire course period and you are welcome to work through it at your own pace.  At each step explore what is possible - change values, try things out.  Your goal today is to really make this board work for you.
+This lab session is intended to take up a decent part of the course period and you are welcome to work through it at your own pace.  At each step explore what is possible - change values, try things out.  Your goal today is to really make this board work for you.
 
 Note - if you are feeling particularly explorative there are other things on the board you could look into ... a slider, accelerometer, temperature sensor, etc.  (Sensors we'll do next week).
 
