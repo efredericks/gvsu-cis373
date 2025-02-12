@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 3
+title: Lab 5 - Synthesizers
 nav_exclude: True
 description: >-
-    Lab 3 page.
+    Lab 5 page.
 ---
 
 ## Table of contents
@@ -14,11 +14,14 @@ description: >-
 
 ---
 
-# Lab 3 - Synthesizers with friends!
+# Lab 5 - Synthesizers!
 
-This week we're going to be making beats and mixing it up with friends in Interactive Media.  They'll be bringing extra things to connect, samples to play, and a fresh perspective on devices in our lives - you'll be programming the synthesizer.
+This week we're going to be making beats and unleashing your inner DJ.  Hopefully you'll have brought extra things to connect and samples to play, as our goal is to experience the different ways in which you can interact with devices. 
 
 (If you're wondering where this fits into a pervasive computing course, think embedded devices, human interaction, and localized sensing).
+
+{: .note }
+This lab was initially intended to be with an Interactive Media course, however that didn't pan out due to instructor changes.  Feel free to work with a partner and do a joint submission for this lab - just denote who you worked with.
 
 ## Lab Signoff
 
@@ -119,7 +122,7 @@ print("Program done - exiting.")
 ```
 
 {: .highlight }
-Walk your new partners through your device, its capabilities, what we're doing here in this section, etc.  
+Consider all of the inputs that you have at your disposal (i.e., those exhaustive lists I had you write up to understand what the device is capable of.  **Each** of them can be bent to your will to do whatever you want!
 
 ### Audio Imports
 
@@ -169,7 +172,7 @@ These are going to give us access to (1) loading in WAV files (i.e., sound sampl
 We also now have our first function!  `play_file` will be called whenever we press one of our touch inputs.
 
 {: .warning }
-If you look around the internet for guides you'll probably see references to the `adafruit_circuitplayground` library.  It will most likely conflict with the way we're handling the speaker as it likes to self-initialize everything.
+If you look around the internet for guides you'll probably see references to the `adafruit_circuitplayground` library.  It will most likely conflict with the way we're handling the speaker as it likes to self-initialize everything.  I can guarantee it **will** conflict with your NeoPixels (as you may have seen before).
 
 {: .highlight }
 Make sure you aren't seeing any errors in the Serial console here! 
@@ -181,7 +184,8 @@ This link describes the tone generator concepts pretty well - we'll be using a `
 
 First up, let's make some manual tones.  We'll use the buttons for these, since we'll be using the touch arrays for other things.
 
-From the [circuitplayground community bundle](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/download/20240123/adafruit-circuitpython-bundle-8.x-mpy-20240123.zip), copy over the `adafruit_waveform` folder into your `lib` directory on your device.
+From your library bundle, copy over the `adafruit_waveform` folder into your `lib` directory on your device.
+(If you deleted it, which you shouldn't, remember you can find it here: [https://circuitpython.org/libraries](https://circuitpython.org/libraries) - don't forget you want v9.x)
 
 Then, let's make tones.  In the imports:
 
@@ -217,7 +221,7 @@ This is all we're doing with tones - however you're more than welcome to incorpo
 
 Samples are small little bits of audio that will play when you activate some input.  
 
-First, you'll need to copy the files to the device.  On your `CIRCUITPY` drive make a folder called `audio`.  Assuming your partner brought in sounds, copy those files over to the new `audio` directory.
+First, you'll need to copy the files to the device.  On your `CIRCUITPY` drive make a folder called `audio`.  Assuming you brought in sounds, copy those files over to the new `audio` directory.
 
 {: .note }
 If you don't have any available sounds you can grab some from Adafruit (this is on the drum machine guide): [https://learn.adafruit.com/elements/2915137/download?type=zip](https://learn.adafruit.com/elements/2915137/download?type=zip)
@@ -238,7 +242,7 @@ audiofiles = ["./audio/bd_tek.wav",
               "./audio/drum_cowbell.wav"]
 ```
 
-This makes a list of files - so if you wanted a cowbell you'd play the file stored in `audiofiles[6]`.  Remember to use the correct file names!  
+This makes a list of files - so if you wanted a cowbell you'd play the file stored in `audiofiles[6]`.  Remember to use the correct file names with the correct capitalization!  
 
 {: .note }
 If you're not familiar with Linux pathing, the `./audio` part means to look in the current directory (`./`) and then in the `audio` folder.  The program is looking relative to where it exists on the `CIRCUITPY` folder.
@@ -313,7 +317,7 @@ If you are using things that are a bit goopy then make sure you clean off the co
 
 Last week we programmed our LEDs.  We haven't really done anything with them this week so far and that is just a shame.  
 
-With your partners, come up with a lightshow to accompany your synth demo.  It can be continuously playing, reactive to your touch, whatever you'd like!  There's no "formal" requirement here other than your lights are doing *something*.
+Now, come up with a lightshow to accompany your synth demo.  It can be continuously playing, reactive to your touch, whatever you'd like!  There's no "formal" requirement here other than your lights are doing *something*.
 
 If you recall, we can set all of our lights to green via:
 
@@ -342,9 +346,9 @@ If you have done everything correctly (i.e., your internal speaker was working e
 
 ## Napkin Ideas
 
-Some of the best ideas are jotted down "on a napkin" when discussing with friends, colleagues, etc.  While you are not required to collaborate for the project, it will result in more of an interesting experience (plus extra credit).
+Some of the best ideas are jotted down "on a napkin" when discussing with friends, colleagues, etc.  While you are not required to collaborate for the project, it will result in more of an interesting experience.
 
-Discuss your thoughts and interests and jot down **at least two** ideas for half-term projects that you could work on (either separately or together).  If you decide to work alone that is fine, but verbalizing your thoughts to others can help to solidify them!  
+Discuss your thoughts and interests and jot down **at least two** ideas for half-term projects that you could work on (either separately or together).  If you decide to work alone that is fine, but verbalizing your thoughts to others can help to solidify them!  If you don't have a partner chat with the person next to you and see what they think.
 
 Some conversation starters:
 
@@ -353,6 +357,8 @@ Some conversation starters:
 * Is there some sort of *experience* you could provide to others with your device?
 
 Regardless, I want you **thinking** about your close-approaching future tasks!
+
+**Note**: these are due by tomorrow night! 
 
 # Resources
 
