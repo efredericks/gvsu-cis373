@@ -416,6 +416,8 @@ def play_file(filename):
 # Setup audio variables
 bpm = 120 
 audio = AudioOut(board.SPEAKER)
+
+# Comment out the next 3 lines if you only want sound coming from the external speaker (either `AUDIO` for Bluefruit or `A0` for Express)
 speaker_enable = digitalio.DigitalInOut(board.SPEAKER_ENABLE)
 speaker_enable.direction = digitalio.Direction.OUTPUT
 speaker_enable.value = True
