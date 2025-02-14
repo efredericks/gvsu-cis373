@@ -23,6 +23,7 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
+* HW5 - February 15
 * HW4 - February 14
 * HW4 Signoff - February 7
 
