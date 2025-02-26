@@ -16,7 +16,7 @@ title: Slides and Readings for CIS373 - Pervasive Computing
 : [Wireless Sensor Networks (2)](/gvsu-cis373/assets/slides/CIS373-4-WSN-2.pdf)
 
 5
-: Introduction to Research!
+: [Introduction to Research!](/gvsu-cis373/assets/slides/CIS373-5-Introduction-to-Research.pdf)
 
 6
 : VANETs
