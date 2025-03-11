@@ -19,7 +19,7 @@ title: Slides and Readings for CIS373 - Pervasive Computing
 : [Introduction to Research!](/gvsu-cis373/assets/slides/CIS373-5-Introduction-to-Research.pdf)
 
 6
-: VANETs
+: [VANETs](/gvsu-cis373/assets/slides/CIS373-6-VANETs.pdf)
 
 7
 : Wearable Computing
