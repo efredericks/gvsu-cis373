@@ -154,19 +154,33 @@ So now, if you want to get the file, eject/unplug your device again, switch the 
 Change the output to include both CPU temperature and the sensor-based temperature and light sensors we used in the last lab.
 The format of your output data should look like this (including line headers), and the name of the file should be `yourlastname-sensor-log.txt` (obviously replacing `yourlastname` with your actual last name).  The ellipses indicate additional lines of data.  The temperature should be in Celsius (i.e., you do not need to convert to Fahrenheit).
 
-Truncate each reading to 2 decimal points.  The print statement you need for that is (there are multiple ways to do this, choose one you're happy with):
+Truncate each sensor reading to 2 decimal points.  The print statement you need for that is (there are multiple ways to do this, choose one you're happy with):
 
 For example, the easiest (to me) would be to update the variable (or create a temporary variable) with the rounded value:
 
 `temp = round(temp, 2)`
 
+Additionally, include the current timestamp (so we know when the readings happened).  You can use this call to get the current time from the start of the program:
+
+`time.monotonic()`
+
+{: .note }
+For simplicity's sake we're just going to use an arbitrary time from the start of the program.  However, if you wanted to 'do better' you could include the datetime library from Adafruit: [https://docs.circuitpython.org/projects/datetime/en/stable/api.html](https://docs.circuitpython.org/projects/datetime/en/stable/api.html)
+
+Your output should resemble this:
+
 ```
 Time,CPU Temperature,Sensor Temperature,Light
-xxx,xxx,xxx,xxx
-xxx,xxx,xxx,xxx
+1.33,23.0,25.92,752
+2.5,23.0,25.89,480
 ...
 ```
-
 ## Extra credit opportunity!
 
-Graph your output in some fashion (using Excel, Python's `matplotlib` or `seaborn` libraries, etc.).  See if there are any trends in your data!
+Graph your output in some fashion (using Excel, Python's `matplotlib` or `seaborn` libraries, etc.).  See if there are any trends in your data!  Include your plots and your plot-generating code/files in your homework submission.  The amount of effort will dictate how much extra credit I assign (just plots will be less than plots with a discussion or critical thinking, for example).
+
+## If you are struggling with the file writing:
+
+* Make sure you're **safely-ejecting** your USB device!  Yanking out the USB cord might result in filesystem issues.
+* If your data file is invalid, make sure that `fp.flush()` is being appropriately called!
+* If your data seems invalid, insert some `print` statements with your intended data to make sure it is working as you think it is.
