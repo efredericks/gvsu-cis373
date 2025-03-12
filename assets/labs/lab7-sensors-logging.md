@@ -18,7 +18,7 @@ description: >-
 
 Last week you got your temperature and light sensors working.  Clearly, not optimal for **real** deployments, but good enough for a reasonable check (especially if you control for sensor interactions).
 
-This week, let's do some communication and data storage.
+This week, let's do some data storage.
 
 {: .warning }
 What we're doing in this lab can **corrupt your files** if you aren't careful.  BEFORE YOU START, BACKUP EVERYTHING ON YOUR DEVICE TO YOUR PERSONAL COMPUTER.
