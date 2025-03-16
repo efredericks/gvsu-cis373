@@ -175,7 +175,12 @@ Time,CPU Temperature,Sensor Temperature,Light
 2.5,23.0,25.89,480
 ...
 ```
+
 ## Extra credit opportunity!
+
+Incorporate last week's code into this lab.  While your device is logging data above, have it also perform the light-reactive requirements from last week's lab (i.e., selecting light vs. temperature and visualizing via the LEDs). 
+
+## Double Extra credit opportunity!
 
 Graph your output in some fashion (using Excel, Python's `matplotlib` or `seaborn` libraries, etc.).  See if there are any trends in your data!  Include your plots and your plot-generating code/files in your homework submission.  The amount of effort will dictate how much extra credit I assign (just plots will be less than plots with a discussion or critical thinking, for example).
 
