@@ -23,8 +23,9 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
+* HW7 Signoff - March 21
+* HW7 - March 28
 * Out of class writeup - March 21
-* HW6 - March 14
 
 ## Course Description
 
