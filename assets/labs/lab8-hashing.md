@@ -79,9 +79,26 @@ So what you should get out of that block of code is that you need (1) a string t
 
 We now have a way to hash a string.  MD5 is pretty common, however there are a large number of other hashing techniques out there.
 
+Lets do a simple test.  Add a password and "check" (the assumption would be that we receive it from somewhere else) to see if it is the same or not:
+
+```python
+password = "Temp12345"
+user_input  = "temp12345"
+
+m1 = hashlib.md5()
+m1.update(password)
+
+m2 = hashlib.md5()
+m2.update(user_input)
+
+print(m1.hexdigest(), m2.hexdigest(), m1.hexdigest() == m2.hexdigest())
+```
+
+And, if you change the `user_input` to be correct, you should see the comparison be `True`.
+
 ### SECRETS
 
-One other thing that may be useful is to learn about the secrets or settings file.  This is a special file typically used to abstract away things like passwords, API keys, etc.
+One other thing that may be useful is to learn about the secrets or settings file.  This is a special file typically used to abstract away things like passwords, API keys, etc.  It used to be `secrets.py` and has transitioned over to `settings.toml`.
 
 {: .warning }
 If you are using source control (e.g., GitHub), DO NOT check your `settings.toml` or `secrets.py` file in with your actual information!  Make sure you delete the saved password information before pushing.
@@ -138,9 +155,17 @@ Import `adafruit_debouncer` and create your buttons as usual.  However, we're go
 from adafruit_debouncer import Debouncer
 
 # create the md5 object
-
-# add buttons
 ...
+
+# setup buttons
+btnA = digitalio.DigitalInOut(board.BUTTON_A)
+btnA.switch_to_input(pull=digitalio.Pull.DOWN)
+
+btnB = digitalio.DigitalInOut(board.BUTTON_B)
+btnB.switch_to_input(pull=digitalio.Pull.DOWN)
+
+btnA_debounced = Debouncer(btnA)
+btnB_debounced = Debouncer(btnB) # Debouncer(btnB, interval=0.05) 
 
 done = False
 while not done:
@@ -148,8 +173,16 @@ while not done:
     btnA_debounced.update()
     btnB_debounced.update()
 
-    ...
+    if btnA_debounced.value and btnB_debounced.value: # Both buttons pressed - exit
+        done = True
+    else:
+        if btnA_debounced.rose:
+            print("Button A released")
 
+        if btnB_debounced.rose:
+            print("Button B released")
+
+    ...
 ```
 
 {: .note }
@@ -157,25 +190,37 @@ We can use `btnA_debounced.value` to check the button state, however you'll prob
 
 ## Putting it together
 
-We can encrypt/decrypt information and we can save important information to separate files.  Let's now put it together.
+We have done a few things that seemingly are random.  Let's put them together.  Let's make our device unlockable!
 
+At the top, define two new variables:
 
+```python
+unlock_code = "ABAB"  # our password
+user_code = ""        # the user's entry
+```
 
+Then, any time the A or B buttons are pressed, add on a new character to the user variable.  It will also be helpful to print out the current state to the terminal for debugging.  For instance on Button A's release:
 
+```python
+if btnA_debounced.rose:
+    user_code += "A"
 
------------------
+# btnB handling
 
-Your job for the homework (as specified below), is to store a string on your device, encrypt it with MD5, receive a string from UART (i.e., sending the string from Bluetooth Connect to your device), and then checking if it was valid or not. 
+print(user_code)
+```
 
-As a hint, you'll need to create a second hash object to handle the incoming string.
+Now, "unlock" the device!  Check if `user_code` matches `unlock_code` and print when the device is unlocked.
 
 ## Homework - Hashing and unlocking
 
 Your device must be unlockable through a key combination, and the comparison must use the `md5` function to compare (similar how you would with a password).
 
-1. Store the letter combination in your `settings.toml` file - it should be `ABAABBA`.
-2. If the device is locked, then the LED ring should be red.  If the device is unlocked, the LED ring should be green.
-3. When the device is unlocked, print the current temperature value to the serial console.  When it is locked, print nothing.
+1. Store the letter combination in your `settings.toml` file - it should be `ABAABBA`.  
+2. The device can only be unlocked if the *hashed* version of the letter combination matches the *hashed* version of the user input.  
+3. If the device is locked, then the LED ring should be red.  If the device is unlocked, the LED ring should be green.
+4. When the device is unlocked, print the current temperature value to the serial console.  When it is locked, print nothing.
+5. When buttons A and B are pressed at the same time, reset the current key combination instead of ending the program.
 
 # References
 
