@@ -16,7 +16,7 @@ description: >-
 
 # Lab 8 - Hashing Sensor Data!
 
-This week we're going to keep it simple.  Let's encrypt and decrypt some data since security is a concern for us as well, in addition to things like sensing, logging, etc.
+This week we're going to keep it simple.  We're going to encrypt some data, clean up our debouncing, and then make our device mildly more secure than it was before.
 
 For this, we're going to make use the `hashlib` library.  Note that if we were to be setting up secured communications then you'd need to be manually-coding a handshake to properly secure things.  This little library is only going to take us so far.
 
@@ -26,7 +26,7 @@ For this, we're going to make use the `hashlib` library.  Note that if we were t
 
 Before you leave for the day, (minimally) show me:
 
-* Your device taking a string and outputting its encrypted format.
+* Your device outputting an encrypted string.
 
 ## Make your backup
 
@@ -52,9 +52,7 @@ First, add the following library to your devices:
 
 ## Hashing and handshaking
 
-Your homework will have you using the `adafruit_hashlib` library to encrypt data (and compare hashed data).  The workflow will be to have a secret password on your local device and hash it.  Your phone (over the Bluetooth Connect app) will send a string and you will compare the hashed value.  
-
-Kind of like how usernames/passwords are handled in some websites.  The password is stored hashed (**NEVER PLAINTEXT**) and compared with a hash of the user's input.
+You'll eventually be locking/unlocking your device via a secret keycode.  Typically you would never store anything in plaintext and only store the hashed values.  For simplicity's sake we'll be storing a plaintext password in this lab, however a better approach is to hash it and then store it.
 
 ### Basic hashing
 
@@ -79,14 +77,16 @@ print(
 
 So what you should get out of that block of code is that you need (1) a string to encrypt, a specific encryption algorithm to run (in this case, MD5), and a way to access the output (for us, in `m.hexdigest()`).
 
+We now have a way to hash a string.  MD5 is pretty common, however there are a large number of other hashing techniques out there.
+
 ### SECRETS
 
-One other thing that may be useful is to learn about the secrets file.  This is a special file typically used to abstract away things like passwords, API keys, etc.
+One other thing that may be useful is to learn about the secrets or settings file.  This is a special file typically used to abstract away things like passwords, API keys, etc.
 
 {: .warning }
-If you are using source control (e.g., GitHub), DO NOT check your `settings.toml` or `secrets.py` file in with your actual information!  Make sure you delete it before pushing.
+If you are using source control (e.g., GitHub), DO NOT check your `settings.toml` or `secrets.py` file in with your actual information!  Make sure you delete the saved password information before pushing.
 
-The format is pretty straightforward - create an empty file called `settings.toml`.
+The format is pretty straightforward - create an empty file called `settings.toml`.  Values saved here will be stored to your environment variables local to your Python program.
 
 ```python
 test="Hello world"
@@ -104,13 +104,56 @@ print(os.getenv("test"))
 print(os.getenv("thumbsup"))
 ```
 
-You should see both variables printing to your console.  
+You should see both variables printing to your console.  If you wanted to, say, save one of those variables to be used within your program all you'd have to do is:
+
+```python
+myvar = os.getenv("test")
+```
+
+Ok, so now we have:
+
+1. The ability to hash a string
+2. The ability to save 'important' information to a separate file.
+
+{: .note }
+Support for the `settings.toml` file only started with CircuitPython 8!
+
+Let's go ahead and "do better" with button debouncing, since we'll be relying on button presses to log in to our devices.
 
 ## Debouncing with a library
 
 Previously we debounced manually.  There is a [library we can use](https://learn.adafruit.com/debouncer-library-python-circuitpython-buttons-sensors/basic-debouncing) to make it a bit cleaner.
 
-Copy over the `adafruit_ticks.mpy` and `adafruit_debouncer.mpy` library files onto your device's `lib` folder.
+Copy over the `adafruit_ticks.mpy` and `adafruit_debouncer.mpy` library files onto your device's `lib` folder (`debouncer` depends on `ticks`).
+
+Instead of mucking about with timers and trying to get the feel "just right" we'll use the debouncer library with button states instead.  It'll be a little bit cleaner, plus you can still play with delays to dial in the feel if you wish.
+
+{: .note }
+The "feel" is handled with the `interval` value mentioned below.
+
+Import `adafruit_debouncer` and create your buttons as usual.  However, we're going to add a debounced object and update the value each iteration.
+
+```python
+
+from adafruit_debouncer import Debouncer
+
+# create the md5 object
+
+# add buttons
+...
+
+done = False
+while not done:
+    # Update our debouncers
+    btnA_debounced.update()
+    btnB_debounced.update()
+
+    ...
+
+```
+
+{: .note }
+We can use `btnA_debounced.value` to check the button state, however you'll probably see it double-triggering.  Not ideal!  Either use `btnA_debounced.fell` to detect if the button is pressed or `btnA_debounced.rose` to detect if the button is released.
 
 ## Putting it together
 
@@ -126,36 +169,16 @@ Your job for the homework (as specified below), is to store a string on your dev
 
 As a hint, you'll need to create a second hash object to handle the incoming string.
 
-## Homework - Hashing data
+## Homework - Hashing and unlocking
 
-For your deliverables, your code must do two things:
+Your device must be unlockable through a key combination, and the comparison must use the `md5` function to compare (similar how you would with a password).
 
-1. `code.yourlastname.beacon.py`: Broadcast accelerometer data, temperature data (from the sensor, NOT the CPU), and light data.  I will be testing with the same node that we had in the lab, so I will be looking at my Serial output for your data.  
-
-2. `code.yourlastname.hash.py`: Receive a string over Bluetooth UART, hash it using `MD5`, and compare it to a known key.  Your program should print to the Serial console that a received string was either valid or invalid, and that comparison **must** be using the hashed values, not plaintext!
-
-The key you need to encrypt is:
-
-> CIS373 is fun
-
-You will submit **two separate code files** for this lab to avoid having the Bluetooth elements conflict with each other.  Name the first one `code.yourlastname.beacon.py` and the second `code.yourlastname.hash.py`.
-
-## Want extra credit? 
-
-Two options here - IN YOUR REPORT LET ME KNOW WHAT YOU DID SO I CAN CHECK IT!
-
-1. Include other data within the packet.  Acceleration, light, and temperature are the minimum required.  Additional points for every extra "valid" data included (including custom data).
-
-2. Have your LEDs react to the received string.  If it is invalid, show red.  If it is valid, show green.  Note, since we're using `adafruit_circuitplayground` you will have to handle LEDs differently - it is up to you to lookup how [+15].
-
-3. Set your device up to re-broadcast data from other nodes (essentially, flooding). [+30].  If you do this, tell me what I need to do for sending data to your device as well as receiving.
+1. Store the letter combination in your `settings.toml` file - it should be `ABAABBA`.
+2. If the device is locked, then the LED ring should be red.  If the device is unlocked, the LED ring should be green.
+3. When the device is unlocked, print the current temperature value to the serial console.  When it is locked, print nothing.
 
 # References
 
-* [Adafruit BLE broadcastnet](https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/examples.html)
-* [Adafruit BLE broadcatnet API](https://docs.circuitpython.org/projects/ble_broadcastnet/en/latest/api.html)
-* [Adafruit CircuitPlayground Library reference](https://docs.circuitpython.org/projects/circuitplayground/en/latest/examples.html)
-* [Adafruit Acceleration](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express/acceleration)
 * [CircuitPython Hashlib](https://docs.circuitpython.org/projects/hashlib/en/latest/)
 * [Simple hashlib example (various forms of hashing)](https://docs.circuitpython.org/projects/hashlib/en/latest/examples.html)
-* [What is a Beacon?](https://kontakt.io/blog/what-is-a-beacon/)
+* [CircuitPython settings file](https://learn.adafruit.com/mqtt-in-circuitpython/create-your-settings-toml-file)
