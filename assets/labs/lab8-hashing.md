@@ -30,7 +30,7 @@ Before you leave for the day, (minimally) show me:
 
 ## Make your backup
 
-We're going to be "starting fresh."  So, backup last week's code and create a new `code.py` file.
+We're going to be "starting fresh."  So, backup last week's code and create a new `code.py` file.  You can also remove the `boot.py` file since we won't be writing to disk this lab (and we don't want it messing anything up).  After you do make sure you do a full power reset of the device!
 
 {: .note }
 If you have a Bluefruit and are interested in Bluetooth beacons, [last year's lab](/assets/labs/prior/lab8.md) provides information on that.  The documentation is a bit circuitous, so this might be helpful.
