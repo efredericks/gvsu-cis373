@@ -23,6 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
+* HW8 - April 4
+* HW8 Signoff - March 28
 * HW7 - March 28
 * Term Project Presentations - April 15
 * Term Project Deliverables - April 19
