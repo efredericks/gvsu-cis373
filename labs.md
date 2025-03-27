@@ -16,6 +16,6 @@ description: >-
 5. [Lab 5- Synthesizers](/assets/labs/lab5-synth.md)
 6. [Lab 6 - Sensors](/assets/labs/lab6-sensors.md)
 7. [Lab 7 - More Sensors (with logging)](/assets/labs/lab7-sensors-logging.md)
-8. Lab 8 - Sharing Sensor Data
+8. [Lab 8 - Sharing Sensor Data](/assets/labs/lab8-hashing.md)
 9. Lab 9 - Accelerometer and Visualizations
 
