@@ -16,8 +16,8 @@ description: >-
 
 # Lab 8 - Hashing Sensor Data!
 
-{: .important }
-Since there are differences with the Express and Bluefruit in terms of available memory we're going to be **skipping** the hashing part for the homework (i.e., the Express doesn't seem to be able to load in `adafruit_hashlib`.  You are still welcome to do it but it is no longer required.
+{: .warning }
+Since there are differences with the Express and Bluefruit in terms of available memory we're going to be **skipping** the hashing part for the homework (i.e., the Express doesn't seem to be able to load in `adafruit_hashlib`).  You are still welcome to do it but it is no longer required.
 
 This week we're going to keep it simple.  We're going to encrypt some data, clean up our debouncing, and then make our device mildly more secure than it was before.
 
@@ -220,7 +220,7 @@ Now, "unlock" the device!  Check if `user_code` matches `unlock_code` and print 
 Your device must be unlockable through a key combination, and the comparison must use the `md5` function to compare (similar how you would with a password).
 
 1. Store the letter combination in your `settings.toml` file - it should be `ABAABBA`.  
-2. The device can only be unlocked if <del>the *hashed* version of the</del> letter combination matches the <del>*hashed* version of the</del> user input.  
+2. The device can only be unlocked if the <del>*hashed* version of the</del> letter combination matches the <del>*hashed* version of the</del> user input.  
 3. If the device is locked, then the LED ring should be red.  If the device is unlocked, the LED ring should be green.
 4. When the device is unlocked, print the current temperature value to the serial console.  When it is locked, print nothing.
 5. When buttons A and B are pressed at the same time, reset the current key combination instead of ending the program.
