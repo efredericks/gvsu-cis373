@@ -78,7 +78,7 @@ Wondering about the plotter and how to use it?  Check out [this link](https://co
 
 Now, try moving your device around and getting a feeling for the different values.  One way you can do that is to *isolate* an axis to rotate around.  For instance, only make one rotational or translational motion on an axis to see things happen.
 
-![axes](/assets/images/lab9-axes.)
+![axes](/gvsu-cis373/assets/images/lab9-axes.)
 
 ### Get them working with LEDs
 
@@ -131,7 +131,7 @@ If you are interested, here are a few explanations:
 
 The first link actually lets us understand why when you start rotating it fully around an axis that it slides back - the accelerometer values go back to home, meaning any rotation angle calculated will go from 0 to 180 and then back to 0 (rather than going the full 360 degrees).
 
-![X axis rotational gravity](/assets/images/lab9-rot-grav.png)
+![X axis rotational gravity](/gvsu-cis373/assets/images/lab9-rot-grav.png)
 
 The next bit is interesting in terms of using those values.  To get rotational angles from accelerometer values we can transform them into quaternions (or, rotational angles that use imaginary numbers).
 
@@ -148,7 +148,7 @@ And then convert it to the quaternion for roll (a similar equation exists for pi
 </div>
 
 {: .note }
-If you are interested in getting a Bluefruit talking to your browser via Bluetooth, [last year's lab](/assets/labs/prior/lab9.md) has you interacting with a WebGL application I wrote as a demo for CIS367 and this class.  You *could* extend it to use serial instead if you have an Express, but that would require a separate library plus managing the serial connection (Windows, Linux, and Macs all handle serial paths differently).
+If you are interested in getting a Bluefruit talking to your browser via Bluetooth, [last year's lab](/gvsu-cis373/assets/labs/prior/lab9.md) has you interacting with a WebGL application I wrote as a demo for CIS367 and this class.  You *could* extend it to use serial instead if you have an Express, but that would require a separate library plus managing the serial connection (Windows, Linux, and Macs all handle serial paths differently).
 
 ## Second, live updates in the terminal
 
