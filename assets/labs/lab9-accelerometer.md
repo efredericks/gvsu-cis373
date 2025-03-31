@@ -78,8 +78,7 @@ Wondering about the plotter and how to use it?  Check out [this link](https://co
 
 Now, try moving your device around and getting a feeling for the different values.  One way you can do that is to *isolate* an axis to rotate around.  For instance, only make one rotational or translational motion on an axis to see things happen.
 
-![axes](https://i.stack.imgur.com/FS7OG.png)
-
+![axes](/assets/images/lab9-axes.)
 
 ### Get them working with LEDs
 
@@ -132,10 +131,7 @@ If you are interested, here are a few explanations:
 
 The first link actually lets us understand why when you start rotating it fully around an axis that it slides back - the accelerometer values go back to home, meaning any rotation angle calculated will go from 0 to 180 and then back to 0 (rather than going the full 360 degrees).
 
-<div align="center">
-<img alt="X axis rotational gravity" src="https://i.stack.imgur.com/vMLJc.png" />
-</div>
-
+![X axis rotational gravity](/assets/images/lab9-rot-grav.png)
 
 The next bit is interesting in terms of using those values.  To get rotational angles from accelerometer values we can transform them into quaternions (or, rotational angles that use imaginary numbers).
 
