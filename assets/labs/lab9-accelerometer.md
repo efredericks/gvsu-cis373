@@ -78,7 +78,7 @@ Wondering about the plotter and how to use it?  Check out [this link](https://co
 
 Now, try moving your device around and getting a feeling for the different values.  One way you can do that is to *isolate* an axis to rotate around.  For instance, only make one rotational or translational motion on an axis to see things happen.
 
-![axes](/gvsu-cis373/assets/images/lab9-axes.)
+![axes](/gvsu-cis373/assets/images/lab9-axes.png)
 
 ### Get them working with LEDs
 
