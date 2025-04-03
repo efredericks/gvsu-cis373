@@ -187,7 +187,7 @@ print(f"\33[K{x:.3f},\t{y:.3f},\t{z:.3f}")
 And we can break it up a touch to make the formatting a bit nicer.
 
 ```python
-print(f"\33[Accelerometer values")
+print(f"\33[KAccelerometer values")
 print(f"\33[KX: {x:.3f}")
 print(f"\33[KY: {y:.3f}")
 print(f"\33[KZ: {z:.3f}")
