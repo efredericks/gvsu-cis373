@@ -148,7 +148,7 @@ And then convert it to the quaternion for roll (a similar equation exists for pi
 </div>
 
 {: .note }
-If you are interested in getting a Bluefruit talking to your browser via Bluetooth, [last year's lab](/gvsu-cis373/assets/labs/prior/lab9.md) has you interacting with a WebGL application I wrote as a demo for CIS367 and this class.  You *could* extend it to use serial instead if you have an Express, but that would require a separate library plus managing the serial connection (Windows, Linux, and Macs all handle serial paths differently).
+If you are interested in getting a Bluefruit talking to your browser via Bluetooth, [last year's lab](/gvsu-cis373/assets/labs/prior/lab9/) has you interacting with a WebGL application I wrote as a demo for CIS367 and this class.  You *could* extend it to use serial instead if you have an Express, but that would require a separate library plus managing the serial connection (Windows, Linux, and Macs all handle serial paths differently).
 
 ## Second, live updates in the terminal
 
@@ -209,6 +209,9 @@ You have the current accelerometer values being printed.  Add the following fiel
 * The current light value from your light sensor
 * The minimum light value recorded from your light sensor from the current session
 * The maximum light value recorded from your light sensor from the current session
+
+{: .note }
+Reading the temperature and light values with the `adafruit_circuitplayground` library means using `cp.temperature` and `cp.light`, respectively.
 
 ### Want extra credit?  Have your LEDs react to the direction you're tilting the device.
 
