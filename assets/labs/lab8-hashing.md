@@ -19,6 +19,9 @@ description: >-
 {: .warning }
 Since there are differences with the Express and Bluefruit in terms of available memory we're going to be **skipping** the hashing part for the homework (i.e., the Express doesn't seem to be able to load in `adafruit_hashlib`).  You are still welcome to do it but it is no longer required.
 
+{: .warning }
+Additional knowledge gained, apologies, missed this when debugging hashlib somehow.  The Express ALSO doesn't support the `settings.toml` file setting due to memory limitations.  Only discovered this trawling through GitHub issues when debugging: [https://github.com/adafruit/circuitpython/issues/8168](https://github.com/adafruit/circuitpython/issues/8168).  If you have an Express, just store the password in-code.
+
 This week we're going to keep it simple.  We're going to encrypt some data, clean up our debouncing, and then make our device mildly more secure than it was before.
 
 For this, we're going to make use the `hashlib` library.  Note that if we were to be setting up secured communications then you'd need to be manually-coding a handshake to properly secure things.  This little library is only going to take us so far.

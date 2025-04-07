@@ -28,4 +28,4 @@ title: Slides and Readings for CIS373 - Pervasive Computing
 : [Edge Computing](/gvsu-cis373/assets/slides/CIS373-8-Edge-Fog-Computing.pdf)
 
 9
-: Security and Privacy
+: [Security and Privacy](/gvsu-cis373/assets/slides/CIS373-9-Security-and-Privacy.pdf)

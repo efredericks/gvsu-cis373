@@ -23,9 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
+* Term Project Progress - April 11
 * HW9 - April 11
-* HW9 Signoff - April 4
-* HW8 - April 4
 * Term Project Presentations - April 15
 * Term Project Deliverables - April 19
 
