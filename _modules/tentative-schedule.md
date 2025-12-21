@@ -7,25 +7,25 @@ title: Slides and Readings for CIS373 - Pervasive Computing
   : (Read prior to class) [The Computer for the 21st Century - Weiser](/gvsu-cis373/assets/weiser-1991-ubiquitous.pdf)
 
 2
-: [System Architectures](/gvsu-cis373/assets/slides/CIS373-2-System-Architectures.pdf)
+: System Architectures
 
 3
-: [Wireless Sensor Networks (1)](/gvsu-cis373/assets/slides/CIS373-3-WSN-1.pdf)
+: Wireless Sensor Networks (1)
 
 4
-: [Wireless Sensor Networks (2)](/gvsu-cis373/assets/slides/CIS373-4-WSN-2.pdf)
+: Wireless Sensor Networks (2)
 
 5
-: [Introduction to Research!](/gvsu-cis373/assets/slides/CIS373-5-Introduction-to-Research.pdf)
+: Introduction to Research!
 
 6
-: [VANETs](/gvsu-cis373/assets/slides/CIS373-6-VANETs.pdf)
+: VANETs
 
 7
-: [Wearable Computing](/gvsu-cis373/assets/slides/CIS373-7-Wearable-Computing.pdf)
+: Wearable Computing
 
 8
-: [Edge Computing](/gvsu-cis373/assets/slides/CIS373-8-Edge-Fog-Computing.pdf)
+: Edge Computing
 
 9
-: [Security and Privacy](/gvsu-cis373/assets/slides/CIS373-9-Security-and-Privacy.pdf)
+: Security and Privacy
