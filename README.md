@@ -87,6 +87,7 @@ Here are a list of resources I've collected that might help out.
 ### Adafruit Circuit Playground Bluefruit 
 
 * [Adafruit Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit?view=all){:target="\_blank"}
+* [Build with Prof. G (Arduino/Circuit Python hands-on)](https://www.youtube.com/@BuildWithProfG)
 
 ### CircuitPython
 
