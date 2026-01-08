@@ -33,11 +33,6 @@ schedule:
         end: 11:00 AM
         location: MAK D2-210
   - name: Wednesday
-    events:
-      - name: Office Hours
-        start: 1:00 PM
-        end: 2:00 PM
-        location: Zoom
   - name: Thursday
     events:
       - name: Office Hours

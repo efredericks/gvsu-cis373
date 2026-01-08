@@ -57,10 +57,10 @@ At least this semester I'll be skipping Mu personally as I decided to go with Li
 
 ## Install CircuitPython and Libraries
 
-When you plug in your device for the first time you'll most likely see a `CPLAYBOOT` or `CPLAYBTBOOT` directory pop up - this means you're in bootloader mode.  If you see `CIRCUITPY` you're most likely fine (meaning, your device is running CircuitPython).
+When you plug in your device for the first time you'll most likely see a `CPLAYBOOT` or `CPLAYBTBOOT` directory pop up - this means you're in bootloader mode.  If you see `CIRCUITPY` you're most likely fine (meaning, your device is running CircuitPython).  If you don't see anything then you need to install CircuitPython!
 
 {: .important }
-We want to be running the latest version of CircuitPython - 10.x. It may be pre-installed on your device, but it may not.  Depends on when your board was built!  If you already have 10.x then you do **not** need to do the CircuitPython install!  (The libraries you do though).
+We want to be running the latest version of CircuitPython - 10.x. It may be pre-installed on your device, but it may not.  Depends on when your board was built!  If you already have 10.x then you do **not** need to do the CircuitPython install!  (The libraries you do though).  However, if you see colored lights ringing around it then you do **not** have it installed!
 
 ---
 
@@ -88,13 +88,14 @@ And then...
 > [https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuit-playground-bluefruit-circuitpython-libraries](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuit-playground-bluefruit-circuitpython-libraries)
  
 {: .note }
-You want the libraries that work with CircuitPython 9.x!  The earlier libraries will not work!  Additionally, the page might be specific to the Bluefruit however the libraries should work fine regardless, as they are targeted at CircuitPython and not the device itself.
+You want the libraries that work with CircuitPython 10.x!  The earlier libraries will not work!  Additionally, the page might be specific to the Bluefruit however the libraries should work fine regardless, as they are targeted at CircuitPython and not the device itself.
 
 You're going to need the `neopixel.mpy` library from the above library download.  Open up the ZIP file, go into the `lib` directory, and copy `neopixel.mpy` into the `lib` directory on your device.
 
 {: .important }
 Make sure you keep that archive of libraries handy!  You'll be needing it for nearly every lab!  (Sometimes the download takes a *while*).
 
+We may or may not get to this during the semester, but you may want to install [*circup*](https://learn.adafruit.com/keep-your-circuitpython-libraries-on-devices-up-to-date-with-circup/overview/) - this is a package manager similar to `pip` that works on the CircuitPlayground.  As of writing I haven't tried it, but there is an excellent video guide from [Prof. Gallaugher at Boston College](https://www.youtube.com/watch?v=yNTlcwxJtlw) if you want to try it out.
 
 ## But first...
 
@@ -108,7 +109,8 @@ Ensure that, when you submit your code to Blackboard, you name it: `code.hw[assi
 
 For example, if I were to submit this myself I would name it: `code.hw3.fredericks.py`.
 
-**HOWEVER**, don't name it until you're ready to submit to Blackboard - remember it needs to be named `code.py` to make it run on your device!
+{: .warning}
+**HOWEVER**, don't rename it until you're ready to submit to Blackboard - remember it needs to be named `code.py` to make it run on your device!
 
 --- 
 
