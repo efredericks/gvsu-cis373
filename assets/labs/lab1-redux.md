@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 3 (Lab 1 Redux)
+title: Lab 1
 nav_exclude: True
 description: >-
-    Lab 3 (Lab 1) Redux page.
+    Lab 1 page.
 ---
 
 ## Table of contents
@@ -14,13 +14,9 @@ description: >-
 
 ---
 
-# Lab 3 (Lab 1) - Getting Started (Again)
+# Lab 1 - The Intro!
 
-Supply chain resolved! We're going to go back to Lab 1 and actually do it in real hardware.
-
-**Note: this is not identical to lab 1!  It is similar but there are some minor differences.  If you are one of the few that jumped ahead make sure you hit all the requirements.**
-
-This lab has you getting everything ready to go to work on your Circuit Playground Bluefruit or Express!  We are going to need to install the Mu Editor, get libraries installed, and then do some basic introductory-type things to ensure that your device is happily blinking along.
+This lab has you getting everything ready to go to work on your Circuit Playground Bluefruit (or Express, though hopefully we don't have to worry about *that* this semester)!  We are going to need to install the Mu Editor, get libraries installed, and then do some basic introductory-type things to ensure that your device is happily blinking along.
 
 We're going to be doing a "lot" of things here, but hopefully they'll soon become second nature to you.  In theory, you should only need to install Mu once, and the libraries as-needed.  The rest you hould be able to continue using throughout the semester!
 
@@ -64,7 +60,9 @@ At least this semester I'll be skipping Mu personally as I decided to go with Li
 When you plug in your device for the first time you'll most likely see a `CPLAYBOOT` or `CPLAYBTBOOT` directory pop up - this means you're in bootloader mode.  If you see `CIRCUITPY` you're most likely fine (meaning, your device is running CircuitPython).
 
 {: .important }
-We want to be running the latest version of CircuitPython - 9.x.  
+We want to be running the latest version of CircuitPython - 10.x. It may be pre-installed on your device, but it may not.  Depends on when your board was built!  If you already have 10.x then you do **not** need to do the CircuitPython install!  (The libraries you do though).
+
+---
 
 If you have installed CircuitPython already and you're in bootloader mode, you should be able to hit the reset button to switch (you might need to double tap it).
 

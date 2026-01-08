@@ -7,7 +7,7 @@ description: >-
 
 # Syllabus
 
-* [Winter 2025](/gvsu-cis373/assets/CIS373_W2025_Fredericks_Syllabus.pdf){:target="_blank"}
+* [Winter 2026](/gvsu-cis373/assets/CIS373_W2026_Fredericks_Syllabus.pdf){:target="_blank"}
 
 # Plagiarism Policy
 
