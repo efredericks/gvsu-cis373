@@ -26,22 +26,23 @@ timeline:
   - '8:30 PM'
 schedule:
   - name: Monday
-  - name: Tuesday
     events:
       - name: Office Hours
-        start: 10:00 AM
-        end: 11:00 AM
+        start: 11:00 AM
+        end: 12:00 PM
         location: MAK D2-210
+  - name: Tuesday
   - name: Wednesday
   - name: Thursday
     events:
-      - name: Office Hours
-        start: 10:00 AM
-        end: 11:00 AM
-        location: MAK D2-210
       - name: Section 01
         start: 6:00 PM
         end: 8:50 PM
         location: MAK D2-233
   - name: Friday
+    events:
+      - name: Office Hours
+        start: 11:00 AM
+        end: 12:00 PM
+        location: MAK D2-210
 ---
