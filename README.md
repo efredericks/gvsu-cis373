@@ -23,7 +23,7 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* TBD
+* Lab 1 - January 23 by 11:59pm
 
 ## Course Description
 
