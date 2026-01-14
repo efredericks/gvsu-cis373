@@ -57,7 +57,7 @@ At least this semester I'll be skipping Mu personally as I decided to go with Li
 
 ## Install CircuitPython and Libraries
 
-When you plug in your device for the first time you'll most likely see a `CPLAYBOOT` or `CPLAYBTBOOT` directory pop up - this means you're in bootloader mode.  If you see `CIRCUITPY` you're most likely fine (meaning, your device is running CircuitPython).  If you don't see anything then you need to install CircuitPython!
+When you plug in your device for the first time you'll most likely see a `CPLAYBOOT` or `CPLAYBTBOOT` directory pop up - this means you're in bootloader mode.  If you see `CIRCUITPY` you're most likely fine (meaning, your device is running CircuitPython).  **If you don't see anything then you need to install CircuitPython!**
 
 {: .important }
 We want to be running the latest version of CircuitPython - 10.x. It may be pre-installed on your device, but it may not.  Depends on when your board was built!  If you already have 10.x then you do **not** need to do the CircuitPython install!  (The libraries you do though).  However, if you see colored lights ringing around it then you do **not** have it installed!
