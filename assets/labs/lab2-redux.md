@@ -29,7 +29,7 @@ Before you leave for the day, (minimally) show me:
 
 ## First - back up your old code
 
-I am going to make the assumption that your code from Lab 3 either exists as `code.py` or the required naming structure.  One thing that I find helpful is to make a folder *on the device* called `backups`, and to move my old code in there.
+I am going to make the assumption that your code from Lab 1 either exists as `code.py` or the required naming structure.  One thing that I find helpful is to make a folder *on the device* called `backups`, and to move my old code in there.
 
 Remember, the file that runs is `code.py`, so whatever is named that will be active every time you power up the device.
 
@@ -37,7 +37,7 @@ Remember, the file that runs is `code.py`, so whatever is named that will be act
 
 It is good to understand how RGB color works, though it is also good to leverage libraries that take care of all the low-level efforts needed (though, don't import things unless if you absolutely need them - again, memory constraints)!
 
-You should recall this from the simulator!
+> Remember, RGB = RED-GREEN-BLUE, where each color ranges on [0-255].  So, black = (0, 0, 0), white = (255, 0, 255), yellow = (255, 255, 0), etc.
 
 Let's go ahead and add in some light shows to demonstrate why programmable LEDs are just the niftiest thing in the world.
 
