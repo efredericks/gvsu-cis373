@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 5 - Synthesizers
+title: Lab 3 - Synthesizers
 nav_exclude: True
 description: >-
-    Lab 5 page.
+    Lab 3 page.
 ---
 
 ## Table of contents
@@ -14,7 +14,7 @@ description: >-
 
 ---
 
-# Lab 5 - Synthesizers!
+# Lab 3 - Synthesizers!
 
 This week we're going to be making beats and unleashing your inner DJ.  Hopefully you'll have brought extra things to connect and samples to play, as our goal is to experience the different ways in which you can interact with devices. 
 
