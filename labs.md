@@ -11,7 +11,7 @@ description: >-
 
 1. [Lab 1 - Getting Started with the CircuitPlayground Bluefruit](/assets/labs/lab1-redux.md)
 2. [Lab 2 - Rainbows and Capacitive Touch](/assets/labs/lab2-redux.md)
-3. Lab 3 - Simulators
+3. [Lab 3 - Simulators](/assets/labs/lab3.md)
 4. Lab 4 - Capacitive Touch (and more lights)
 5. Lab 5- Synthesizers
 6. Lab 6 - Sensors
