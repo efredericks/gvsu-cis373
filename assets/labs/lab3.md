@@ -31,7 +31,7 @@ Before you leave for the day, (minimally) show me:
 
 1. Your beats (your progression of button presses, written down), light show included, and demo what you've done for the day!
 
-2. An idea (napkin-style, written down, and discussed with me) for how to use embedded devices in a *meaningful* project. **You need to submit two for your writeup by tomorrow night!**
+2. An idea (napkin-style, written down, and discussed with me) for how to use embedded devices in a *meaningful* project. **You need to submit two for your writeup by ~~tomorrow night~~Tuesday night!**
 
 ## A Brief Word
 
