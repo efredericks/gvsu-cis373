@@ -23,10 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 1 - January 23 by 11:59pm
-* -
-* Lab 2 Signoff - January 23 by 11:59pm
 * Lab 2 - January 30 by 11:59pm
+* Lab 3 - February 3 by 11:59pm (no signoff this time)
 
 ## Course Description
 
