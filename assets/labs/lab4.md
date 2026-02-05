@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 6
+title: Lab 4
 nav_exclude: True
 description: >-
-    Lab 6 page.
+    Lab 4 page.
 ---
 
 ## Table of contents
@@ -14,7 +14,7 @@ description: >-
 
 ---
 
-# Lab 6 - Sensors
+# Lab 4 - Sensors
 
 We have learned how to interact with our devices in terms of button presses and LEDs, now it is time to use them as they might be deployed in the field - reading data.
 
@@ -150,6 +150,8 @@ The temperature being recorded is being impacted by the device itself!  This hol
 Comment out the print statement in the forever loop - we don't want it to obliterate our next calls.
 
 The following code "samples" the temperatures over a small period of time and then calculates the average within `resting_temp`.  We'll use that as our baseline later.
+
+(It should go above your forever loop but after your thermistor variable is defined).
 
 ```
 # Sample resting temperature when program starts to get baseline
@@ -327,7 +329,14 @@ Now, comment out the calls to `mapped_value` for the thermometer (save them - yo
 Replace them with:
 
 ```
-mapped_value = p5map(light.value, min_light, resting_light, 0, .15)
+# check to make sure we're not obliterating our 'max' value with LED bleed
+current_light_value = light.value
+if current_light_value > resting_light:
+    current_light_value = resting_light
+
+print(f"Current light value {current_light_value}, Actual light value {light.value}")
+
+mapped_value = p5map(current_light_value, min_light, resting_light, 0, .15)
 if mapped_value < 0.0: mapped_value = 0.0
 if mapped_value > 1.0: mapped_value = 1.0
 pixels.brightness = mapped_value
