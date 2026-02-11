@@ -23,8 +23,10 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 4 Signoff - February 6 by 11:59pm (no signoff this time)
-* Lab 4 - February 13 by 11:59pm (no signoff this time)
+* Lab 4 Signoff - February 6 by 11:59pm
+* Lab 4 - February 13 by 11:59pm
+* Lab 5 Signoff - February 13 by 11:59pm
+* Lab 5 - February 20 by 11:59pm
 
 ## Course Description
 
