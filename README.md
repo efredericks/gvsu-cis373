@@ -27,6 +27,7 @@ seo:
 * Lab 6 Signoff - February 20
 * Lab 6 - March 3
 
+
 ## Course Description
 
 This course introduces students to mobile, ubiquitous, pervasive, and Internet-of-Things (IoT) computing systems and services. Students will develop design skills for pervasive software development using different device platforms. It also provides an overview of future trends and ongoing research in these fast-growing areas. 
