@@ -23,10 +23,9 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 4 Signoff - February 6 by 11:59pm
-* Lab 4 - February 13 by 11:59pm
-* Lab 5 Signoff - February 13 by 11:59pm
-* Lab 5 - February 20 by 11:59pm
+* **MIDTERM EXAM** - February 26
+* Lab 6 Signoff - February 20
+* Lab 6 - March 3
 
 ## Course Description
 

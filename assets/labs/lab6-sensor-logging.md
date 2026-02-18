@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Lab 5
+title: Lab 6
 nav_exclude: True
 description: >-
-    Lab 5 page.
+    Lab 6 page.
 ---
 
 ## Table of contents
@@ -14,7 +14,7 @@ description: >-
 
 ---
 
-# Lab 5 - Sensors (with logging!)
+# Lab 6 - Sensors (with logging!)
 
 Last week you got your temperature and light sensors working.  Clearly, not optimal for **real** deployments, but good enough for a reasonable check (especially if you control for sensor interactions).
 
