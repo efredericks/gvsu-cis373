@@ -18,7 +18,7 @@ description: >-
 
 Last week you shared data with Bluetooth.  Now let's share it with serial.
 
-Let's also up the complexity and hop languages - today you'll be writing both Circuit Python and JavaScript.
+Let's also up the complexity and hop languages - today you'll be writing both CircuitPython and JavaScript.
 
 ![oh no](https://i.pinimg.com/originals/c6/74/d1/c674d1952760d84034211fe15c081a80.gif)
 
@@ -47,7 +47,7 @@ This is effectively a teaching tool for programming/JavaScript and is quite ofte
 Nice though for less memory-intensive applications!
 
 {: .note }
-They also have an excellent [reference guide](https://p5js.org/reference/) and set of [examples](https://p5js.org/examples/) and [tutorials](https://p5js.org/tutorials/) if you want to explore more.
+They also have an excellent [reference guide](https://p5js.org/reference/) and set of [examples](https://p5js.org/examples/) and [tutorials](https://p5js.org/tutorials/) if you want to explore more.  Also, this is how I got into it: [The Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw).
 
 Make sure you sign up for an account - you get cloud storage as part of it and you can easily access/share/edit your projects across devices.  
 

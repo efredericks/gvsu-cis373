@@ -23,9 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* **MIDTERM EXAM** - February 26
-* Lab 6 Signoff - February 20
 * Lab 6 - March 3
+* Term project progress (in-class) - March 18
 
 
 ## Course Description
