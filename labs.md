@@ -16,5 +16,6 @@ description: >-
 6. [Lab 5 - More Sensors (with Bluetooth logging)](/assets/labs/lab5.md)
 7. [Lab 6 - File I/O on the device (or, sensor logging to a file)](/assets/labs/lab6-sensor-logging.md)
 8. Term project progress - see Blackboard
-9. Lab 7 - Hashing
-10. Lab 8 - Accelerometer and Serial Updating
+9. [Lab 7 - Data Analyses](/assets/labs/lab7-data-stats.md)
+9. Lab 8 - Hashing
+10. Lab 9 - Accelerometer and Serial Updating
