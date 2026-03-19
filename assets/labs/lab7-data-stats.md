@@ -151,7 +151,7 @@ After the install occurs, you can test it by entering Python directly:
 $ python3
 >>> import scipy
 >>> import seaborn
->>> import pyserial
+>>> import serial
 ```
 
 If you see errors with any of those imports then you have an installation issue.  **Fix them before you move on**.
