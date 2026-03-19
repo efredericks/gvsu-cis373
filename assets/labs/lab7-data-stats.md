@@ -121,7 +121,7 @@ To use it (in Linux/Mac) you can run:
 `source venv/bin/activate` (from your lab directory).
 
 {: .important }
-I am using Linux to do this and don't have a Windows machine to try it out on.  If you're using PowerShell then this *may* work: `Scripts\activate.ps1`.  Check the [`venv` documentation](https://docs.python.org/3/library/venv.html) for PowerShell-specific instructions.
+I am using Linux to do this and don't have a Windows machine to try it out on.  If you're using PowerShell then this *may* work: `.\Scripts\activate.ps1` or `.\Scripts\activate.bat`.  Check the [`venv` documentation](https://docs.python.org/3/library/venv.html) for PowerShell-specific instructions.
 
 
 You should now see something like this in your terminal, this means that all your Python commands are working within the virtual environment instead of your global system.  All packages you install will be installed to the `venv` directory.
