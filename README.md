@@ -23,8 +23,8 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Term project progress (in-class) - March 18
-* Lab 7 Signoff - March 20
+* Lab 8 Signoff - March 27
+* Lab 8 - April 3
 * Lab 7 - March 27
 
 ## Course Description
