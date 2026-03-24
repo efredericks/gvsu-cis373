@@ -17,10 +17,7 @@ description: >-
 # Lab 8 - Hashing Sensor Data!
 
 {: .warning }
-Since there are differences with the Express and Bluefruit in terms of available memory we're going to be **skipping** the hashing part for the homework (i.e., the Express doesn't seem to be able to load in `adafruit_hashlib`).  You are still welcome to do it but it is no longer required.
-
-{: .warning }
-Additional knowledge gained, apologies, missed this when debugging hashlib somehow.  The Express ALSO doesn't support the `settings.toml` file setting due to memory limitations.  Only discovered this trawling through GitHub issues when debugging: [https://github.com/adafruit/circuitpython/issues/8168](https://github.com/adafruit/circuitpython/issues/8168).  If you have an Express, just store the password in-code.
+If you have a non-Bluefruit device (e.g., Circuit Playground Express), then the `adafruit_hashlib` library will not load.  Nor does it support the `settings.toml` file we'll be using.  Minute differences in chipsets make for big differences!
 
 This week we're going to keep it simple.  We're going to encrypt some data, clean up our debouncing, and then make our device mildly more secure than it was before.
 
@@ -36,10 +33,7 @@ Before you leave for the day, (minimally) show me:
 
 ## Make your backup
 
-We're going to be "starting fresh."  So, backup last week's code and create a new `code.py` file.  You can also remove the `boot.py` file since we won't be writing to disk this lab (and we don't want it messing anything up).  After you do make sure you do a full power reset of the device!
-
-{: .note }
-If you have a Bluefruit and are interested in Bluetooth beacons, [last year's lab](/assets/labs/prior/lab8.md) provides information on that.  The documentation is a bit circuitous, so this might be helpful.
+We're going to be "starting fresh."  So, backup last week's code and create a new `code.py` file.  
 
 ## A quick aside
 
@@ -159,6 +153,8 @@ Import `adafruit_debouncer` and create your buttons as usual.  However, we're go
 ```python
 
 from adafruit_debouncer import Debouncer
+import digitalio
+import board
 
 # create the md5 object
 ...
@@ -223,7 +219,7 @@ Now, "unlock" the device!  Check if `user_code` matches `unlock_code` and print 
 Your device must be unlockable through a key combination, and the comparison must use the `md5` function to compare (similar how you would with a password).
 
 1. Store the letter combination in your `settings.toml` file - it should be `ABAABBA`.  
-2. The device can only be unlocked if the <del>*hashed* version of the</del> letter combination matches the <del>*hashed* version of the</del> user input.  
+2. The device can only be unlocked if the *hashed* version of the letter combination matches the *hashed* version of the user input.  
 3. If the device is locked, then the LED ring should be red.  If the device is unlocked, the LED ring should be green.
 4. When the device is unlocked, print the current temperature value to the serial console.  When it is locked, print nothing.
 5. When buttons A and B are pressed at the same time, reset the current key combination instead of ending the program.
