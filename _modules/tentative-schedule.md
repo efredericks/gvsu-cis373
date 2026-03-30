@@ -22,7 +22,7 @@ title: Slides and Readings for CIS373 - Pervasive Computing
 : [VANETs](/gvsu-cis373/assets/slides/CIS373-6-VANETs.pdf)
 
 7
-: Wearable Computing
+: [Wearable Computing](/gvsu-cis373/assets/slides/CIS373-7-Wearable-Computing.pdf)
 
 8
 : Edge Computing
