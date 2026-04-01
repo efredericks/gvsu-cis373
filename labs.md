@@ -18,4 +18,4 @@ description: >-
 8. Term project progress - see Blackboard
 9. [Lab 7 - Data Analyses](/assets/labs/lab7-data-stats.md)
 9. [Lab 8 - Hashing](/assets/labs/lab8-hashing.md)
-10. Lab 9 - Accelerometer and Serial Updating
+10. [Lab 9 - Accelerometer and Serial Updating](/assets/labs/lab9-accelerometer-viz.md)

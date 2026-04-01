@@ -147,9 +147,6 @@ And then convert it to the quaternion for roll (a similar equation exists for pi
   <img src="/gvsu-cis373/assets/images/roll-pitch-2.png" alt="roll and pitch angles 2" />
 </div>
 
-{: .note }
-If you are interested in getting a Bluefruit talking to your browser via Bluetooth, [last year's lab](/gvsu-cis373/assets/labs/prior/lab9/) has you interacting with a WebGL application I wrote as a demo for CIS367 and this class.  You *could* extend it to use serial instead if you have an Express, but that would require a separate library plus managing the serial connection (Windows, Linux, and Macs all handle serial paths differently).
-
 ## Second, live updates in the terminal
 
 There are **innumberable** things you can do with all the sensors at hand.  However, without additional displays or capabilities it is difficult to communicate what is happening.

@@ -23,9 +23,9 @@ seo:
 
 *Note - check Blackboard for any in-class assignments and assignment files!*
 
-* Lab 8 Signoff - March 27
+* Lab 9 Signoff - April 3
+* Lab 9 - April 10 
 * Lab 8 - April 3
-* Lab 7 - March 27
 
 ## Course Description
 
